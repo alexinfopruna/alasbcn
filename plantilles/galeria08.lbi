@@ -1,0 +1,16 @@
+<div id="contingut">	  
+		<div align="right" style="color:#FFFFFF;padding-right:15px;background:#222222">
+		<h3>
+		<a href="alas.php?fitxa=F0502"> [LABORATORIO DE SOLOS] |</a>
+		<a href="alas.php?fitxa=F1000"> [AZUL PETROLEO] |</a>
+		<a href="#videos"> [VIDEOS]</a>
+		</h3>
+		</div>
+	  <div class="galeria">{text3}</div>
+	  <div class="galeria">{text}</div>
+	  <div class="galeria">{text2}</div>
+	  <div class="galeria">{text4}</div>
+	 <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VIDEO</h3>
+	  <a name="videos"></a>
+	  <div class="galeria">{video}</div>
+</div>

@@ -1,0 +1,9 @@
+<div id="contingut">
+	<div id="fotoscrea" >
+	  <div id="video">{video}</div>
+	  <div id="fotos">{fotos}</div>
+	</div>
+	 <div id="fitxa">
+		<div id="detallcrea">{text4}</div>
+	</div>
+</div>

@@ -1,0 +1,11 @@
+<div id="contingut">
+	 <div id="fitxa">
+		<div id="titol">{nom}</div>
+<!--		<div id="profe">{profe} {yprofe2} {profe2} {yprofe3} {profe3}</div>
+ -->		<div id="profe">{profes}</div>
+		<div id="masinfo">{text3}</div>
+		<div id="horari">{text2}{text4}</div>
+		<div id="text">{text}</div>
+		<div id="subtitol">{subtitol}</div>
+	</div>
+</div>

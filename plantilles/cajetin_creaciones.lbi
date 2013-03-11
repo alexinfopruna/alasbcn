@@ -1,0 +1,28 @@
+<!-- BEGIN caixa -->
+<script language="JavaScript" type="text/JavaScript"></script>
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+//-->
+</script>
+
+<div id="cacrea">
+<div id="titolcrea" class="right pad"><a href="alas.php?fitxa={apartat}">{nom}</a></div>
+<table width="375"  border="0" cellpadding="0" cellspacing="0">
+  
+  <tr>
+    <td width="190" valign="top"><div align="right"><span class="creai"><em>{text}</em></span></div></td>
+    <td width="174" valign="top" nowrap><div align="right"><em ><strong  class="cread">{text2}</strong></em></div></td>
+    <td width="11">&nbsp;</td>
+  </tr>
+  <tr>
+    <td><div align="right"></div></td>
+    <td nowrap><div align="right"><span class="nom"><em class="nom">{text3}</em></span></div></td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+</div>

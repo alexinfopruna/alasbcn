@@ -1,0 +1,6 @@
+<div id="contingut" class="calend">
+  <div class="titol-apartat">{nom}</div>
+   <div id="text">
+    {COL0}
+  </div>
+</div>
