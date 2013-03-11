@@ -1,0 +1,75 @@
+<html><head><title>Whizzywig editor for multiple divs</title>
+
+
+<link rel="stylesheet" type="text/css" href="wysiwyg-pop_files/simple.css">
+<script language="JavaScript" type="text/javascript">
+function popwhizz(element){ //Pop up a whizzywig form for the element id
+window.open('whizzery/whizzywig.htm?'+element,'popwhizzhizz',
+'toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=640,height=480,top=100')
+}
+function whizzed(){
+//EXAMPLE ONLY: Join the divs together and put them into the hidden 'edited' - 
+ document.getElementById('edited').value='<table><tr><td>'+document.getElementById('text1').innerHTML
+ +'</td><td>'+document.getElementById('links').innerHTML+'</td></tr></table>'
+ +document.getElementById('text2').innerHTML
+;
+//ALTERNATIVELY: have a <input type="hidden" ...>for each editable block 
+}
+</script></head><body>
+
+<div id="header">
+ <h1><a href="http://www.unverse.net/">Unverse.net</a></h1>websites made. easy.
+ <hr>
+</div><!--header-->
+<form action="http://unverse.net/whizzed.php" method="post" onsubmit="whizzed()">
+ <input id="edited" name="edited" type="hidden">
+
+Click the boxes below to edit contents:
+<textarea name="ta" onclick="popwhizz(this.id)" id="text1">lkdsg dlfsg ldkf  </textarea>
+
+
+
+<table border="1" cellspacing="10"><tbody><tr>
+<td onclick="popwhizz(this.id)" id="text1">
+ <h2>Multiple whizzywigs</h2>
+ <p>This demonstrates whizzywig editing multiple areas</p>
+ <p>Three areas on this page can be edited with a pop-up whizzywig editor.</p>
+ <p>None of them are textareas: they could be, but they look nicer like this</p>
+</td>
+<td onclick="popwhizz(this.id)" id="links">
+ <h2>Elsewhere <img src="wysiwyg-pop_files/link.gif" alt="Links"></h2>
+ <ul>
+ <li><a href="http://www.unverse.net/">Unverse.net</a></li>
+ <li><a href="http://www.abitabout.com/">aBitAbout</a></li>
+ <li><a href="http://news.google.com/">Google News</a></li>
+ </ul>
+</td>
+</tr></tbody></table>
+
+<p>or...</p>
+<button type="button" onclick="popwhizz('text2')">Edit text below</button>
+
+<div id="text2">
+ <h2>How this works</h2>
+ <p>You need <a href="http://www.unverse.net/whizzery/whizzywig.js">whizzywig.js</a>, version 53 or later and<br>
+ <a href="http://www.unverse.net/whizzery/whizzywig.htm" target="_blank"><strong>whizzywig.htm</strong></a> on your server. &#8592;Follow that link and <br>File &gt; Save as... to get a copy.</p>
+ <p>You may need to edit it to get the path to <strong>whizzywig.js</strong> right and to play with the settings in the //CONFIGURE section</p>
+ 
+ <img src="wysiwyg-pop_files/frog.gif" title="Why is this frog here?" alt=" RRRIBBIT! " align="right"><p>Right click and View Source on this page to see what you need in your html pages. </p>
+ <p>The function <strong>popwhizz(id)</strong>
+on this page pops up a whizzywig editor (user can resize it), prefilled
+with the content of the DIV you specify&nbsp;with the id parameter. The
+id parameter is the id of the DIV. </p>
+ <p>When the user clicks <strong>Update</strong> the pop-up closes and it updates the DIV.</p>
+ <p><em>It does not have to be a DIV: it can be any element that can contain other block level elements, e.g. TD.</em></p>
+ <p>This demo shows 2 different ways of invoking the editor: </p>
+ <ol>
+ <li>click the text, or </li>
+ <li>a button </li></ol>
+ <p>- <em>but you could use other events</em>.</p>
+ <p>You need some kind of function to copy the edited DIVS into hidden form fields on submit. The one on this page is <strong>just an example</strong>.<br></p>
+</div>
+
+<input name="submit" value="Submit" type="submit">
+</form>
+</body></html>

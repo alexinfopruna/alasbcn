@@ -1,0 +1,10 @@
+    <div id="fitxa">  	
+			  <div id="titol-submenu" class="titol-submenu">
+					LINKS      
+			  </div>	
+		  <div id="links">
+				{links}      
+		  </div>		
+			
+				{text}{text2}{text3}
+	</div>

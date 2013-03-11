@@ -1,0 +1,9 @@
+<div id="caixa_submenu" class="barrascroll">
+{text2}
+      <div id="submenu">
+            {submenu} 
+	  </div>		
+      <div id="text">
+            {text}
+      </div>
+</div>

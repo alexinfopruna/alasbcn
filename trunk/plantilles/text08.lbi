@@ -1,0 +1,9 @@
+<div id="contingut">
+	 <div id="fitxa">
+		<div id="titol">{nom}</div>
+		<div id="text">{text}</div>
+		<div id="text">{text2}</div>
+		<div id="text">{text3}</div>
+		<div id="subtitol">{subtitol}</div>
+	</div>
+</div>

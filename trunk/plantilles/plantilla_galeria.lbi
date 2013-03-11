@@ -1,0 +1,12 @@
+<div id="contingut" style="background-image:url({img_fons});">
+	 <div id="fitxa">
+		<div id="titol">{nom}</div>
+		<div style="margin:-20px 23px" class="txt-color">{subtitol}</div>
+		<div id="profe">{profe} {yprofe2} {profe2} {yprofe3} {profe3}</div>
+		<div id="horari">{text2}</div>
+		<div id="text">
+		 {galeria}&nbsp;&nbsp;
+	    </div>
+		<div id="text">{text}</div>
+	</div>
+</div>

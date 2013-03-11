@@ -1,0 +1,597 @@
+/* CSS Document */
+html
+{
+/*  background-color:#555555;*/
+  height:100%;
+
+}
+body
+{
+ font-family: "trebuchet MS",helvetica,sans-serif;
+/*
+  background-color:#555555;
+  background-image:url(fonsnav.gif);
+*/
+  background-color:#444;
+  margin:0px;
+    height:100%;
+
+}
+
+div
+{
+/*  /* font-family: "Century Gothic", "AvantGarde Bk BT", Arial; */
+  text-decoration: none;
+}
+
+a:link, a:visited
+{
+  text-decoration: none;
+  color: #666;
+}
+
+a:hover
+{
+  text-decoration: none;
+opacity:.70;filter: alpha(opacity=70); -moz-opacity: 0.7;
+
+/*  color: #AA4444;*/
+}
+/*
+h1, h2, h3
+{
+  letter-spacing:0.1px;
+  font-size: 17px;
+  text-decoration: none;
+  color: #444;
+}
+
+h1
+{
+  font-size: 22px;
+  font-weight: bold;  
+}
+
+h2
+{
+  font-weight: bold;  
+  font-size: 17px;
+
+}
+
+h3
+{
+
+}
+*/
+
+
+
+li
+{
+  /*list-style-type: none;*/
+}
+
+li.post{
+list-style-type:disc;
+
+}
+
+#container
+{
+  width:800px;
+    height:100%;
+
+  margin:0px auto auto auto;
+  background-color:black;
+}
+
+#isobre
+{
+  float:right;
+  margin: 8px 10px 0px 0px;
+  
+}
+
+#isobre a:hover
+{
+  filter:alpha(opacity=80); /* IE */
+  -moz-opacity:0.8; /* Firefox, Opera, ... */
+  opacity: 0.8; /* CSS 3*/
+  border-color:#000000;
+
+}
+
+
+#logo
+{
+  display:block;
+  margin:auto;
+  /*margin:25px 0px 55px 10px;*/
+ margin: 54px 0px 22px 18px;
+}
+
+#menu_isqui
+{
+  float:left;
+  background-color:#444;
+  width:200px;
+  height:100%;
+}
+
+#submenu
+{
+  padding: 138px 0px 0px 0px;
+  /*background-color:#FF3366;*/
+
+}
+
+.titol-submenu{color:#444;float:left;font-size:35px;padding:110px 0 0 25px;}
+.titol-apartat{color:#444;font-size:35px;padding:0px 0 15px 15px;}
+#caixa_submenu{padding-top: 50px;}
+
+#contingut  
+{
+  /*position:absolute;
+  top:75px;*/
+  margin-top:0;
+  /*height:490px;*/
+  /*width:596px;*/
+  padding: 150px 0px 0px 0px;
+  /*overflow:auto;*/  
+ /* background-color:white;*/
+padding-bottom:100px;
+
+  }
+
+#fitxa
+{
+/*  padding:40px 0px 20px 0px;*/
+  padding:0px 0px 20px 0px;
+  text-align:right;
+  color:#FFFFFF;
+  /*overflow:auto;*/
+}
+
+#titol, h1
+{
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom:15px;
+  margin-right:25px;
+  color:#777;
+}
+
+
+#profe, #horari, #subtitol,  .txt-color, h2
+{
+  color: #777;
+  letter-spacing:-0.2px;
+  font-style: italic;
+  font-size: 16px;
+  margin-left:20px;
+  margin-right:25px;
+}
+
+#horari p{margin:0;}
+
+#masinfo{
+    color: #777;
+    padding-top:15px;
+  margin-left:20px;
+  margin-right:25px;
+}
+
+#subtitol, h4
+{
+  font-size: 14px;
+}
+
+#profe, h2
+{
+    font-weight: bold;
+
+}
+
+#links
+{
+  padding-top:170px;
+  /*padding-right:80px;*/
+  margin-right:80px;
+
+}
+
+#text, #solotext
+{
+  /* font-family: "Century Gothic", "AvantGarde Bk BT", Arial; */
+  letter-spacing:0.8px;
+    text-align: justify;
+    padding: 7px;
+  /*text-transform: lowercase; */
+  
+  font-size: 14px;
+  color: #444;
+
+}
+#text{  margin:31px 20px 20px 20px;}
+
+
+
+
+#frase
+{
+  /* font-family: "Century Gothic", "AvantGarde Bk BT", Arial; */
+  letter-spacing:0.8px;
+  font-size: 17px;
+  text-decoration: none;
+  color: #333333;
+    text-align: justify;
+  margin:71px 30px 20px 30px;
+    padding: 7px;
+  font-weight: bold;  
+  /*text-transform: lowercase; */
+   
+ 
+}
+
+
+#peu
+{
+   clear: both;
+  background-color:#000000;
+  margin:0px 0px 0px 0px; 
+/*  font-family: "Century Gothic";*/
+  font-size: 18px;
+  color: #FFFFFF;
+  letter-spacing: 6px;
+  font-weight: bold;
+}
+
+#col_dere
+{
+   margin-left: 200px;
+   background-color: white;
+   background-repeat: no-repeat;
+   background-size: 600px 130px;
+/*height:580px;  ALSADA */
+  
+}
+
+.apartat-00 #col_dere, #container.submenu #col_dere{
+   background-size: auto;
+  
+}
+
+#untext{
+  margin: 0 15px 0 15px;
+
+}
+
+/************************
+************************
+************************
+*************************/
+
+.mnu, .mnu a:link, .mnu a:visited{
+ /* font-family:geneva,georgia;*/
+ font-family:"trebuchet MS",helvetica,sans-serif; 
+  letter-spacing:0.8px;
+  font-size: 15px;
+  text-decoration: none;
+  text-align:right;
+  /*padding-left:7px;*/
+  /*color: #7E7070;*/
+ color:#CCC;
+  margin:11px 6px 20px 0px;
+  font-weight: normal;  /*font-weight: bold;*/
+ 
+/*  text-transform: lowercase;*/
+}
+
+ .mnu a:hover{
+  opacity: .80;
+filter: alpha(opacity=80);
+-moz-opacity: 0.8;
+}
+  
+.select, .select a:link, .select a:visited, .select a:hover
+{
+  /*color: #A09494;*/
+ color:#AAA;
+  /*margin-right:12px;*/
+
+}
+.mnu a:hover
+{
+  /*color: #AA6666;*/
+  
+}
+
+.nom
+{
+  color: #888;
+
+}
+
+
+div.transOFF {}
+div.trans50 {opacity:.50;filter: alpha(opacity=50); -moz-opacity: 0.5;}
+div.trans25  {opacity:.25;filter: alpha(opacity=25); -moz-opacity: 0.25;}
+/*div.transON {opacity:.10;filter: alpha(opacity=10); -moz-opacity: 0.10;}*/
+
+.mn3, .mn4, .mn3 a:visited, .mn3 a:link
+{
+  /* font-family: "Century Gothic", "AvantGarde Bk BT", Arial; */
+  letter-spacing:-0.3px;
+  font-size: 16px;
+  text-decoration: none;
+  text-align:right;
+/*  color: #333322;*/
+
+  padding: 0px 0px 0px 0px;
+  margin-bottom: 25px;
+    font-weight: bolder;
+}
+
+.mn4
+{
+  background-color:#F9F9F9;
+/*  opacity:.25;filter: alpha(opacity=25); -moz-opacity: 0.25;*/
+}
+
+.barrascroll {
+  scrollbar-3dlight-color:#000000; 
+  scrollbar-arrow-color:#000000; 
+  scrollbar-darkshadow-color:#000000; 
+  scrollbar-face-color:#444444; 
+  scrollbar-highlight-color:#000000; 
+  scrollbar-shadow-color:#000000; 
+  scrollbar-track-color:#000000;
+}
+
+.linc
+{
+  margin-bottom:5px;
+  padding-right:25px;
+}
+
+a.credits:link, a.credits:visited
+{
+/*  color:#FFFFFF*/
+}
+a.credits:hover
+{
+/*  color:#999966*/
+}
+
+
+/* CREACIONES */
+.right
+{
+text-align:right;
+}
+
+.pad
+{
+  padding: 10px;
+}
+
+.creai
+{
+color:#999966;
+font-size:14px;
+font-weight:bold;
+}
+
+.cread
+{
+color:#FFFFFF;
+font-size:14px;
+
+}
+
+
+#cacrea
+{
+background-image:url(../imatges/fons_crea.jpg);
+background-repeat:no-repeat;
+}
+
+#titolcrea
+{
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom:5px;
+/*  margin-right:25px;*/
+  color:#999966;
+
+}
+
+img {
+}
+
+.galeria
+{
+/*clear:both;*/
+padding:20px 0 20px 25px;
+}
+
+.seixanta{  height: 65px;
+  text-align: center;
+display: block;
+margin: auto;
+}
+.fotoborde{
+  text-align: center;
+
+}
+.fotogal {
+width:104px;
+float:left;
+margin-bottom:2px;
+}
+
+.fotogal a:hover{
+  filter:alpha(opacity=70); /* IE */
+  -moz-opacity:0.7; /* Firefox, Opera, ... */
+  opacity: 0.7; /* CSS 3*/
+  border-color:#000000;
+}
+
+a.video:link, a.video:visited {
+  color:#FFFFFF;
+  font-size: 10px;
+}
+a.video:hover {
+  color:#999966;
+  font-size: 10px;
+}
+.fotovideo {
+  color:#666;
+  font-size:12px;
+  text-align:center;
+  clear:both;
+  margin-top:0px ;
+  margin-bottom:10px;
+  background-color:#111111;
+}
+
+#fotoscrea{
+padding:0px 15px 15px 15px;
+float:left;
+width:105px;
+height:470px;
+/*background-color:#FF0000;*/
+}
+
+#detallcrea{
+  align:center;
+  text-align:center;
+/*   font-family: "Century Gothic", "AvantGarde Bk BT", Arial; */
+  letter-spacing:0.8px;
+    padding: 7px;
+float:right;
+  /*text-transform: lowercase; */
+  margin:0px 10px 10px 10px;  
+  font-size: 14px;
+  color: #666;
+  width:400px;
+
+}
+
+div.horizontal_scroller{
+   position:fixed;
+   left:0px;
+   bottom:0px;
+   height:30px;
+   width:100%;
+   background-color:#444;
+}
+
+/* IE 6 */
+* html div.horizontal_scroller {
+   position:absolute;
+   top:expression((0-(footer.offsetHeight)+(document.documentElement.clientHeight ? document.documentElement.clientHeight : document.body.clientHeight)+(ignoreMe = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop))+'px');
+}
+
+  div.horizontal_scrollercxxx{
+    position:relative;
+    height:24px;
+    display:block;
+    overflow:hidden;
+    margin-top:25px;
+  }
+  div.scrollingtext{
+  color:white;
+    position:absolute;
+    white-space:nowrap;
+   /* font-family:"Century Gothic", "AvantGarde Bk BT", Arial;*/
+    font-size:18px;
+    /*font-weight:bold;*/
+  }
+/**/
+.apartat-98 #col_dere{background-color: #111;min-height:1000px;}
+.apartat-07 #col_dere{background-color: #111}
+.apartat-10 #col_dere{background-color:#111 }
+.plantilla-creaciones #col_dere{background-color:#111}
+
+.apartat-07 .galeria,.apartat-10 #solotext{color: #666}
+.apartat-10 #text,.apartat-10 #solotext{color:#666}
+.apartat-07 h1,.apartat-07 h2,.apartat-07 h3{color:#666}
+
+/*.galeria-fotos{margin:0 auto 0 auto;}
+.galeria{clear:both;}*/
+
+.vertical {
+  writing-mode:bt-rl;
+  -webkit-transform:rotate(-90deg);
+  -moz-transform:rotate(-90dg);
+  -o-transform: rotate(-90deg);
+  white-space:nowrap;
+}
+
+.table-calendari{
+  background: url(calendari.png) 0 0px no-repeat;
+  width:60px;
+  height:70px;
+  text-align: center;
+  float:left;
+  /*margin-right:12px;*/
+  margin-left:12px;
+  border-spacing: 0px;
+  }
+  /*td{border:red solid 1px;}*/
+
+.plantilla-calendario h3{   
+  font-size: 20px;    
+  color: #888;    
+  padding: 0px 5px 0px 10px;    
+  border: #DDD solid 1px;  
+   margin-top:38px;    
+   /*border-bottom: #888 solid 1px;*/    
+   background:#EEE;    
+text-align:left;  }  
+.calendari-mes{
+  font-weight:bold;
+  font-size:12px;
+  color:white;
+  height:10px;
+  }
+
+.calendari-mes td{
+    padding-top:4px;
+
+}
+  
+.calendari-dia{
+  font-size:25px;
+  font-weight:bold;
+  letter-spacing: 0.5px;
+  margin-top:-10px;
+   }
+.calendari-dia td{
+  height:10px;
+  vertical-align: top;
+}
+
+.calendari-text{
+  min-height:64px;
+  margin-left: 80px;
+  border-left: #DDD solid 1px;
+  /*border-bottom: #DDD solid 1px;*/
+  padding-left:7px;
+}
+.plantilla-calendario #text{
+  margin-top:0px;
+  padding-top:0px;
+  margin-left: 10px;
+}
+
+.plantilla-calendario a{  
+  font-weight:bold;
+}
+
+.plantilla-calendario #text{  
+  text-align:left;
+}
+
