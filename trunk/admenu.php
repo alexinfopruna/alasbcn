@@ -1,4 +1,6 @@
 <?php
+header('Content-Type: text/html; charset=UTF-8');
+
 require_once('Connections/alasdb.php'); 
 require_once('script/alex100.inc');
 

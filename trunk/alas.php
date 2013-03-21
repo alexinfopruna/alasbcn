@@ -1,4 +1,5 @@
 <?php
+header('Content-Type: text/html; charset=UTF-8');
     require_once('Connections/alasdb.php'); 
     require_once('script/alex100.inc');//if (!valida_admin()) $fitxa='777';
  
@@ -26,6 +27,21 @@
     $menu=menu($alas,$lang);
     $textscroll=peu($alas,$fitxa_peu,$lang);
     $row["sobre"]=$sobre=sobre();
+ 
+ 
+/*******************************************/
+/************      CONFIG    ***************/
+defined('ALAS_MAIL_SUBSCRIPCIO') or define('ALAS_MAIL_SUBSCRIPCIO', 'info@alasbcn.com');
+defined('ALAS_MAIL_SUBSCRIPCIO_SUBJECT') or define('ALAS_MAIL_SUBSCRIPCIO_SUBJECT', 'Nueva subscripción al mail-list');
+
+$translate['ALAS_SUBSCRIPCIO_OK']['ct']="<h1>Subscripció a ALAS</h1>Hem incorporat les teves dades per mantenir-te informat de les activitats que organitza ALAS.<br/><br/>Gràcies per utilitzar aquest servei";
+$translate['ALAS_SUBSCRIPCIO_OK']['cs']="<h1>Subscripción a ALAS</h1>Hemos incorporado tus datos para mantenerte informado de las actividades que organice ALAS.<br/><br/>Gracias por utilizar este servicio";
+$translate['ALAS_SUBSCRIPCIO_KO']['ct']="OPS!!. S´ha produït un error al servidor. <br/><br/>Intenta-ho més tard";
+$translate['ALAS_SUBSCRIPCIO_KO']['cs']="OPS!!. Se ha producido un error en el servidor. <br/><br/>Intentalo más tarde";
+
+/*******************************************/
+/*******************************************/
+ 
    
 //////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
@@ -34,8 +50,9 @@
 //////////////////////////////////////////////////////////////////////////
 
 // CARREGA LES DADES DE LA FITXA        
-  $query_menu = "SELECT * FROM apartats2013 WHERE apartat='$fitxa' AND publicado=1";
-	$rs = mysql_query($query_menu, $alas);
+  $query_menu = "SELECT * FROM $TABLE_APARTATS WHERE apartat='$fitxa' AND publicado=1";
+  //echo $query_menu;die();	
+  $rs = mysql_query($query_menu, $alas);
     
   
     if ($row = mysql_fetch_assoc($rs))
@@ -114,6 +131,28 @@
       if (!empty($row["text4"])) $row["text4"]=$row["text4"];
       
     }
+    
+    if (isset($_REQUEST['maillist']) && isset($_REQUEST['ne'])){
+      $nom=$_REQUEST['nn'];
+      $mail=$_REQUEST['ne'];
+      $text_mail_subscripcio="Hemos recibido una solicitud de subscripción a la lista de correo:<br/><br/>      
+        Nombre: $nom
+        <br/>
+        Email:$mail
+      ";
+      
+      
+      $headers = "From: " . strip_tags($_REQUEST['ne']) . "\r\n";
+      $headers .= "Reply-To: ". strip_tags($_REQUEST['ne']) . "\r\n";
+      $headers .= "MIME-Version: 1.0\r\n";
+      $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
+      $mail_result=mail(ALAS_MAIL_SUBSCRIPCIO,ALAS_MAIL_SUBSCRIPCIO_SUBJECT,$text_mail_subscripcio,$headers,"-f $mail");
+      
+      $resposta= $mail_result?$translate['ALAS_SUBSCRIPCIO_OK'][$lang]:$translate['ALAS_SUBSCRIPCIO_KO'][$lang];
+      //echo htmlentities($resposta);
+      echo $resposta;
+      die();
+    }
 
 function printr($var){echo "<pre>";print_r($var);echo "</pre>";}
 
@@ -121,7 +160,10 @@ function printr($var){echo "<pre>";print_r($var);echo "</pre>";}
 ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<!-- 
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+-->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
@@ -147,6 +189,9 @@ function printr($var){echo "<pre>";print_r($var);echo "</pre>";}
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js" type="text/javascript"></script>
 <script src="script/jquery.Scroller-1.0.min.js" type="text/javascript"></script> 
+<script src="javascript/jquery.validate.min.js" type="text/javascript"></script> 
+<script src="javascript/jquery.form.js" type="text/javascript"></script> 
+<script src="javascript/messages_<?php echo ($lang==ct?'ca':'es'); ?>.js" type="text/javascript"></script> 
 <script type="text/javascript">
 	jQuery.noConflict();
 	jQuery(function() {
@@ -167,9 +212,66 @@ function printr($var){echo "<pre>";print_r($var);echo "</pre>";}
 		cursor: 		'pointer' or any other CSS style			[default is 'pointer']
 	*/
 
+  jQuery("#subscripcio").validate({
+    rules: {
+      nn: {
+        required: true,
+        minlength: 2
+      },
+      ne: {
+        required: true,
+        email: true
+      }
+    },
 
+  });
+      var lang='<?php echo ($lang==ct?'ca':'es'); ?>';
+     var options = { 
+        target:        '#subscripcio',   // target element(s) to be updated with server response 
+        beforeSubmit:  showRequest,  // pre-submit callback 
+        success:       showResponse  // post-submit callback 
+ 
+        // other available options: 
+        //url:       url         // override for form's 'action' attribute 
+        //type:      type        // 'get' or 'post', override for form's 'method' attribute 
+        //dataType:  null        // 'xml', 'script', or 'json' (expected server response type) 
+        //clearForm: true        // clear all form fields after successful submit 
+        //resetForm: true        // reset the form after successful submit 
+ 
+        // $.ajax options can be used here too, for example: 
+        //timeout:   3000 
+    }; 
+ 
+    // bind form using 'ajaxForm' 
+    jQuery("#subscripcio").ajaxForm(options); 
 
 });
+
+// pre-submit callback 
+function showRequest(formData, jqForm, options) { 
+    if (!jQuery("#subscripcio").valid()) return false;   
+   
+      jQuery("#subscripcio").html('<img src="images/ajax-loading.gif" />');
+     return true; 
+} 
+ 
+// post-submit callback 
+function showResponse(responseText, statusText, xhr, $form)  { 
+    // for normal html responses, the first argument to the success callback 
+    // is the XMLHttpRequest object's responseText property 
+ 
+    // if the ajaxForm method was passed an Options Object with the dataType 
+    // property set to 'xml' then the first argument to the success callback 
+    // is the XMLHttpRequest object's responseXML property 
+ 
+    // if the ajaxForm method was passed an Options Object with the dataType 
+    // property set to 'json' then the first argument to the success callback 
+    // is the json data object returned by the server 
+ /*
+    alert('status: ' + statusText + '\n\nresponseText: \n' + responseText + 
+        '\n\nThe output div should have already been updated with the responseText.');
+ */ 
+} 
 
 </script>
 
@@ -242,13 +344,12 @@ function printr($var){echo "<pre>";print_r($var);echo "</pre>";}
 
 function menu($alas=null,$lang)
 {
-    global $apartat,$fons_menu,$plantilla,$title;
+    global $TABLE_APARTATS,$apartat,$fons_menu,$plantilla,$title;
     
     if (is_numeric($lang)) $sufix_idioma=$extensio_lang[$lang];
 
-	$query_menu = "SELECT * FROM apartats2013 WHERE apartat LIKE 'M%' AND SUBSTRING(apartat,4,2)='00' ORDER BY n_fitxes";
-	//$query_menu = "SELECT * FROM admin";
-	$rs = mysql_query($query_menu, $alas);
+	$query_menu = "SELECT * FROM $TABLE_APARTATS WHERE apartat LIKE 'M%' AND SUBSTRING(apartat,4,2)='00' ORDER BY n_fitxes";
+$rs = mysql_query($query_menu, $alas);
     $n=mysql_num_rows($rs);
     
     $base_fitxa="alas.php?fitxa=";
@@ -289,13 +390,13 @@ function menu($alas=null,$lang)
 
 function submenu($alas=null,$lang)
 {
-    global $apartat,$fitxa;
+    global $TABLE_APARTATS,$apartat,$fitxa;
 
     if(substr($fitxa, 3,2)!="00") return;
 
     if (is_numeric($lang)) $sufix_idioma=$extensio_lang[$lang];
 
-	$query_menu = "SELECT * FROM apartats2013 WHERE LEFT(apartat,3)='M$apartat' AND SUBSTRING(apartat,4,2)<>'00' ORDER BY n_fitxes";
+	$query_menu = "SELECT * FROM $TABLE_APARTATS WHERE LEFT(apartat,3)='M$apartat' AND SUBSTRING(apartat,4,2)<>'00' ORDER BY n_fitxes";
 	$rs = mysql_query($query_menu, $alas);
 	
     $base_fitxa="alas.php?fitxa=";
@@ -342,11 +443,11 @@ function submenu($alas=null,$lang)
 
 function links($alas=null)                
 {
-    global $apartat;
+    global $TABLE_APARTATS,$apartat;
     
     $class="linc";
 
-	$query_menu = "SELECT * FROM apartats2013 WHERE apartat LIKE 'L%' ORDER BY apartat";
+	$query_menu = "SELECT * FROM $TABLE_APARTATS WHERE apartat LIKE 'L%' ORDER BY apartat";
 	$rs = mysql_query($query_menu, $alas);
     
     $base_fitxa="http://";
@@ -377,7 +478,7 @@ function sobre()
 	  </div>
 	  
 	  <div id="isobre" class="TransOFF" onmouseover="this.className='."'transON'".'" onmouseout="this.className='."'transOFF'".'">&nbsp;
-	  <a href="alas.php?fitxa=F0005" title="Informaci�" onmouseover="this.className='."'transON'".'" onmouseout="this.className='."'transOFF'".'">
+	  <a href="alas.php?fitxa=F1500" title="Informació" onmouseover="this.className='."'transON'".'" onmouseout="this.className='."'transOFF'".'">
 	  <img src="css/info.gif" alt="info" width="25" height="25" border="0" />
 	  </a>
 	  </div>';
@@ -392,11 +493,11 @@ function sobre()
 
 function profes($row,$alas)
 {
-    global $lang;
+    global $TABLE_APARTATS,$lang;
         if (isset($row['profe']))  
         {
             $profe=$row['profe'];
-	        $query_menu = "SELECT * FROM apartats2013 WHERE apartat LIKE '$profe'";
+	        $query_menu = "SELECT * FROM $TABLE_APARTATS WHERE apartat LIKE '$profe'";
 	        $rs = mysql_query($query_menu, $alas);
             if ($prof = mysql_fetch_assoc($rs))
             {
@@ -409,7 +510,7 @@ function profes($row,$alas)
         if (isset($row['profe3']))  
         {
             $profe=$row['profe3'];
-	        $query_menu = "SELECT * FROM apartats2013 WHERE apartat LIKE '$profe'";
+	        $query_menu = "SELECT * FROM $TABLE_APARTATS WHERE apartat LIKE '$profe'";
 	        $rs = mysql_query($query_menu, $alas);
             if ($prof = mysql_fetch_assoc($rs))
             {
@@ -423,7 +524,7 @@ function profes($row,$alas)
         if (isset($row['profe2']))  
         {
             $profe=$row['profe2'];
-	        $query_menu = "SELECT * FROM apartats2013 WHERE apartat LIKE '$profe'";
+	        $query_menu = "SELECT * FROM $TABLE_APARTATS WHERE apartat LIKE '$profe'";
 	        $rs = mysql_query($query_menu, $alas);
             if ($prof = mysql_fetch_assoc($rs))
             {
@@ -450,11 +551,12 @@ function profes($row,$alas)
 
 function peu($alas=null,$fitxa_peu=null,$lang)
 {
+    global $TABLE_APARTATS,$lang;
 //	require_once('Connections/alasdb.php'); 
 	if (!$fitxa_peu) $fitxa_peu="999";
 	
 	//mysql_select_db($database_alas, $alas);
-	$query_alas = "SELECT * FROM apartats2013 WHERE apartat ='".$fitxa_peu."'";
+	$query_alas = "SELECT * FROM $TABLE_APARTATS WHERE apartat ='".$fitxa_peu."'";
 	$rs = mysql_query($query_alas, $alas) or die(mysql_error());
 	$row_alas = mysql_fetch_assoc($rs);
 	$totalRows_alas = mysql_num_rows($rs);
@@ -473,21 +575,20 @@ function peu($alas=null,$fitxa_peu=null,$lang)
 function calendario()
 {
     
-	global $alas,$lang;
+	global $TABLE_APARTATS,$alas,$lang;
 	
 	
- 	$query_apartat = "SELECT * FROM apartats2013 WHERE apartat='F0402'";
+ 	$query_apartat = "SELECT * FROM $TABLE_APARTATS WHERE apartat='F0402'";
 	$apartat = mysql_query($query_apartat, $alas) or die(mysql_error());
 	$row_apartat=mysql_fetch_array($apartat);
 	
-	$query_calendario="SELECT *,'cajetin_calendario.lbi' as plantilla,MONTH(data) as month FROM apartats2013 WHERE apartat LIKE 'F%' AND calendario=1  AND data >= NOW() ORDER BY data ASC";
+	$query_calendario="SELECT *,'cajetin_calendario.lbi' as plantilla,MONTH(data) as month FROM $TABLE_APARTATS WHERE apartat LIKE 'F%' AND calendario=1  AND data >= NOW() ORDER BY data ASC";
  	$calendario[0]=mysql_query($query_calendario, $alas) or die(mysql_error());             
   
-	//$t=cols_plantilla($row_apartat,$calendario);
-	//$t=load_recordset_plantilla($calendario[0]);
-	//$locale=$lang=='ct'?'ca_ES.utf8':'es_ES';
 	$locale=$lang=='ct'?'catalan':'es_ES';
+	//$locale=$lang=='ct'?'"ca_ES.utf8"':'es_ES.utf8';
 	setlocale(LC_ALL, $locale);
+  //setlocale(LC_TIME, 'ca_ES', 'Catalan_Spain', 'Catalan');
 	$out="";
 	$mes=0;
  while ($row = mysql_fetch_assoc($calendario[0]))
@@ -502,6 +603,8 @@ function calendario()
     $row['text2_'.$lang]=str_replace('<br>','',$row['text2_'.$lang]);
    
     $nommes=strtoupper(strftime("%B",strtotime($row['data'])));
+    $nommes=utf8_encode($nommes);
+    
     $row['mes']=ucfirst(strftime("%b",strtotime($row['data'])));
 //    $row['dia']=strftime("%#d",strtotime($row['data']));
     $row['dia']=strftime("%e",strtotime($row['data']));
@@ -534,15 +637,15 @@ function calendario()
 function creaciones()
 {
     
-	global $alas,$lang;
+	global $TABLE_APARTATS,$alas,$lang;
 	
 	$lang=0;
 	
-	$query_apartat = "SELECT * FROM apartats2013 WHERE apartat='F0502'";
+	$query_apartat = "SELECT * FROM $TABLE_APARTATS WHERE apartat='F0502'";
 	$apartat = mysql_query($query_apartat, $alas) or die(mysql_error());
 	$row_apartat=mysql_fetch_array($apartat);
 	
-	$query_creaciones="SELECT * FROM apartats2013 WHERE apartat LIKE 'F98%' AND nom_cs<>'' ORDER BY apartat DESC";
+	$query_creaciones="SELECT * FROM $TABLE_APARTATS WHERE apartat LIKE 'F98%' AND nom_cs<>'' ORDER BY apartat DESC";
 	$creaciones[0]=mysql_query($query_creaciones, $alas) or die(mysql_error());             
   
 	$t=cols_plantilla($row_apartat,$creaciones);
@@ -555,6 +658,7 @@ function creaciones()
 
 function galeria($dir)
 {
+	global $TABLE_APARTATS,$alas,$lang;
 	if (!isset($dir)) $dir='galeria/';
     $files=scan_Dir($dir,"gif;jpg;JPG;jpeg;swf");
 	   $torna='<div class="galeria-fotos">';
@@ -584,7 +688,7 @@ function galeria($dir)
 
 function fotos_creaciones($id,$tipo="F")
 {
-		global $lang;
+		global $TABLE_APARTATS,$lang;
 
         $id=str_replace("F",$tipo,$id);
         $files=scan_Dir('img_creaciones/',"gif;jpg;jpeg;swf");
@@ -626,12 +730,12 @@ function fotos_creaciones($id,$tipo="F")
 
 function detall_creaciones($rou)
 {
-	global $alas,$lang;
+	global $TABLE_APARTATS,$alas,$lang;
 	
 
     $video='<div class="fotovideo" style="">video<br></div>';
 	
-	$query_apartat = "SELECT * FROM apartats2013 WHERE apartat='".$rou['apartat']."'";
+	$query_apartat = "SELECT * FROM $TABLE_APARTATS WHERE apartat='".$rou['apartat']."'";
 	$qvideo = mysql_query($query_apartat, $alas) or die(mysql_error());	
 	$row_apartat=mysql_fetch_array($qvideo);
         
@@ -659,6 +763,7 @@ function detall_creaciones($rou)
 
 function videos($dir="img_creaciones/")
 {
+	global $TABLE_APARTATS,$alas,$lang;
 	if (!isset($dir)) $dir='img_creaciones/';
     $files=scan_Dir($dir,"flv");
 	
