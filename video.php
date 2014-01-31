@@ -45,7 +45,7 @@
 			controlBarBackgroundColor:'0x2e8860',
 			initialScale: 'scale',
 			//videoFile: 'http://localhost/www.alasbcn.com/img_creaciones/tres_forats.mpg.FLV'
-			videoFile: 'http://www.alasbcn.com/img_creaciones/<? echo $_GET['file'];?>'
+			videoFile: 'http://www.alasbcn.com/img_creaciones/<?php  echo $_GET['file'];?>'
 		}} 
 	);
 	</script>	

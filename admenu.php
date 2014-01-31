@@ -1,4 +1,4 @@
-<?php
+<?php 
 header('Content-Type: text/html; charset=UTF-8');
 
 require_once('Connections/alasdb.php'); 
@@ -218,7 +218,7 @@ function autunum($menu)
 ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Alas. Un espacio de crecimiento art�stico y personal</title>
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
@@ -313,16 +313,16 @@ display:none;
 			  <embed src="css/logo_animat.swf" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="186" height="54"></embed>
 		</object>
 	</div>
-    <?  echo $menu; ?> 
+    <?php   echo $menu; ?> 
   </div>
   
-  <div id="col_dere" style="background-image:url(<? echo $imag_fons ?>);">	
+  <div id="col_dere" style="background-image:url(<?php  echo $imag_fons ?>);">	
         <div id="sobre">
-            <?
+            <?php 
                 echo $sobre;
             ?>
         </div>
-            <?
+            <?php 
                 //echo $row["links"];
                 echo "<div style='background-color:#222222;text-align:center'><a href='admin2/admin_modificar_apartat.php?fitxa=$fitxa&like=F0&mnu=$fitxa'><strong>[Editar fitxa $fitxa]</strong></a> | <a href='admin2/admin_insert_apartat.php?fitxa=$fitxa&like=F0&mnu=$fitxa'><strong>[Crear nueva fitxa]</strong></a></div>";
                // echo $sm;
@@ -332,10 +332,10 @@ display:none;
     
 	 
 	<div id="peux" style="text-align:center;">
-		<?php //require ("script/scroll.js");?>
+		<?php  //require ("script/scroll.js");?>
 	    <form id="form2" name="form2" method="post" action="admenu.php?scroll=ed">
-	      <input name="scroll_cs" type="text" value="<? echo $textscroll?>" size="60" style="text-align:center;	font-size:12px"/>
-	      <input name="scroll_ct" type="text" value="<? echo $textscroll_ct?>" size="60" style="text-align:center;	font-size:12px"/>
+	      <input name="scroll_cs" type="text" value="<?php  echo $textscroll?>" size="60" style="text-align:center;	font-size:12px"/>
+	      <input name="scroll_ct" type="text" value="<?php  echo $textscroll_ct?>" size="60" style="text-align:center;	font-size:12px"/>
                 <input type="submit" name="Submit2" value="Cambiar scroll" />
 	    </form>
     </div>
@@ -344,7 +344,7 @@ display:none;
 <div id="velat" name="velat"></div>
 
 <div id="frm" name="frm" style="frm">
-  <form id="form1" name="form1" method="post" action="admenu.php?fitxa=<?echo $fitxa?>">
+  <form id="form1" name="form1" method="post" action="admenu.php?fitxa=<?php echo $fitxa?>">
     <table width="800" border="0" align="center" cellpadding="0" cellspacing="0">
       <tr >
         <td class="nom" ><a href="javascript:oculta();">[cerrar]</a></td>
@@ -387,7 +387,7 @@ display:none;
       <tr>
         <td class="nom"><div align="right">Imagen de fondo </div></td>
         <td>&nbsp;</td>
-        <td><input name="fons" type="text" size="2" maxlength="2" id="fons" value="<? echo $row['img_fons'] ?>"/></td>
+        <td><input name="fons" type="text" size="2" maxlength="2" id="fons" value="<?php  echo $row['img_fons'] ?>"/></td>
       </tr>
 -->
       <tr>
@@ -395,14 +395,14 @@ display:none;
         <td>&nbsp;</td>                       
         <td> 
         <select name="img_fons" id="img_fons">
-          <option value="<? echo $row['img_fons'] ?>"></option>
-          <?php $files=scan_Dir('imatges/',"gif;jpg;jpeg;swf");
+          <option value="<?php  echo $row['img_fons'] ?>"></option>
+          <?php  $files=scan_Dir('imatges/',"gif;jpg;jpeg;swf");
 	
 	foreach ($files as $kay => $val)
 	{
         //$diana=strcmp($row['img_fons'], $val) ?>
-          <option value="<?php echo $val?>"><?php echo $val?></option>
-          <?php }?>
+          <option value="<?php  echo $val?>"><?php  echo $val?></option>
+          <?php  }?>
         </select>
         </td>
       </tr>
@@ -431,7 +431,7 @@ display:none;
 
 </body>
 </html>
-<?php
+<?php 
 //********************************************************************************************
 //********************************************************************************************
 //   FUNCIONS
@@ -545,6 +545,9 @@ function submenu($alas=null,$lang)
         
         $tcs=htmlentities($row["nom_cs"]);
         $tct=htmlentities($row["nom_ct"]);
+        //$tcs=($row["nom_cs"]);
+        //$tct=($row["nom_ct"]);
+        
         $ed_params="'".$mitxa."', '".$tcs."', '".$tct."', '".$row['link']."', ".$row["n_fitxes"];
         
        $mnedit='<a href="javascript:editar('.$ed_params.')" title="Editar este elemento" ><img src="css/edit.gif" style="margin-right:-5px" ></a>

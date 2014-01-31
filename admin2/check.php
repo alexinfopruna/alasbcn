@@ -1,4 +1,4 @@
-<?php require_once('../Connections/alasdb.php'); 
+<?php  require_once('../Connections/alasdb.php'); 
 $colname_Recordset1 = "1";
 
 if (isset($_POST['pass'])) {
@@ -25,7 +25,7 @@ if(($_POST["usr"]=="alex")&&($_POST["pass"]=="alkaline")) $totalRows_Recordset1=
  
  if ($totalRows_Recordset1==0) 
  {
- 	session_register('admin');	
+ 	//session_register('admin');	
 	$_SESSION['admin']='ERR';
 	session_destroy();
 	echo '<meta http-equiv="refresh" content="0;URL=nolog.htm">'; 
@@ -34,7 +34,7 @@ if(($_POST["usr"]=="alex")&&($_POST["pass"]=="alkaline")) $totalRows_Recordset1=
  else 
  {
  	session_start();
-	session_register('admin');	
+	//session_register('admin');	
  	$_SESSION['admin']='18081971l1l1alas606782798';
     $_SESSION['pass']="ok";
 	
@@ -52,7 +52,7 @@ if(($_POST["usr"]=="alex")&&($_POST["pass"]=="alkaline")) $totalRows_Recordset1=
 
 <head>
 <title>Documento sin t&iacute;tulo</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>
 
 <body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">

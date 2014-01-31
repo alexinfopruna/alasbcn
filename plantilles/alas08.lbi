@@ -3,8 +3,8 @@
 		<div id="titol">{nom}</div>
 <!--		<div id="profe">{profe} {yprofe2} {profe2} {yprofe3} {profe3}</div>
  -->		<div id="profe">{profes}</div>
-		<div id="masinfo">{text3}</div>
-		<div id="horari">{text2}{text4}</div>
+		<div id="masinfo">{text3}{text4}</div>
+		<div id="horari">{text2}</div>
 		<div id="text">{text}</div>
 		<div id="subtitol">{subtitol}</div>
 	</div>

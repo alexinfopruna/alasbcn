@@ -1,4 +1,4 @@
-<?php 
+<?php  
 require_once('../script/alex100.inc');
 if (!isset($dir)) $dir='../imatges/';
 ?>
@@ -6,7 +6,7 @@ if (!isset($dir)) $dir='../imatges/';
 <html>
 <head>
 <title>Documento sin t&iacute;tulo</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <style type="text/css">
 <!--
 body {
@@ -42,7 +42,7 @@ body {
 <blockquote>
   <blockquote>
     <p align="left">  
-      <?php $fotos=scan_Dir($dir);
+      <?php  $fotos=scan_Dir($dir);
 
 foreach($fotos as $k => $v)
 {

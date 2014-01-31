@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 if ( !isset( $_SERVER ) ) {
     $_SERVER = $HTTP_SERVER_VARS ;

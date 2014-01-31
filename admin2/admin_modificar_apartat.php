@@ -1,4 +1,4 @@
-<?php 
+<?php  
 include_once("fckeditor/fckeditor.php") ;
 require_once('../Connections/alasdb.php'); 
 require_once('../script/alex100.inc');
@@ -54,7 +54,7 @@ if (isset($_SERVER['QUERY_STRING'])) {
 }
 
 if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1")) {
-  $updateSQL = sprintf("UPDATE apartats2013 SET apartat=%s, descripcio=%s, plantilla=%s, nom_cs=%s, nom_ct=%s, profe=%s, profe2=%s, profe3=%s, text_cs=%s, text_ct=%s, text2_cs=%s, text2_ct=%s, text3_cs=%s, text3_ct=%s, text4_cs=%s, text4_ct=%s, subtitol_cs=%s, subtitol_ct=%s, img_fons=%s, img=%s, img2=%s, img3=%s, img4=%s, linkprofe=%s, link=%s, link2=%s, link3=%s, link4=%s, color=%s, n_fitxes=%s, calendario=%s, publicado=%s, data=%s WHERE apartat=%s",
+  $updateSQL = sprintf("UPDATE apartats2013 SET apartat=%s, descripcio=%s, plantilla=%s, nom_cs=%s, nom_ct=%s, profe=%s, profe2=%s, profe3=%s, text_cs=%s, text_ct=%s, text2_cs=%s, text2_ct=%s, text3_cs=%s, text3_ct=%s, text4_cs=%s, text4_ct=%s, subtitol_cs=%s, subtitol_ct=%s, img_fons=%s, img=%s, img2=%s, img3=%s, img4=%s, linkprofe=%s, link=%s, link2=%s, link3=%s, link4=%s, color=%s, n_fitxes=%s, calendario=%s, publicado=%s, data=%s, text_calendari_cs=%s,text_calendari_ct=%s WHERE apartat=%s",
                        GetSQLValueString($_POST['apartax'], "text"),
                        GetSQLValueString($_POST['descripcio'], "text"),
                        GetSQLValueString($_POST['plantilla'], "text"),
@@ -88,6 +88,8 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1")) {
                        GetSQLValueString($_POST['calendario']=='calendario'?1:0, "int"),
                        GetSQLValueString($_POST['publicado']=='publicado'?1:0, "int"),
                        GetSQLValueString($_POST['data'], "text"),
+                       GetSQLValueString($_POST['text_calendari_cs'], "text"),
+                       GetSQLValueString($_POST['text_calendari_ct'], "text"),
                        GetSQLValueString($_POST['apartat'], "text"));
 
   mysql_select_db($database_alas, $alas);
@@ -129,7 +131,7 @@ switch ($like)
 <html>
 <head>
 <title>Documento sin t&iacute;tulo</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
 <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
 <META HTTP-EQUIV="Expires" CONTENT="-0">
@@ -157,7 +159,7 @@ function mostraData(){
 </script>
 
 <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.0/themes/base/jquery-ui.css" type="text/css" media="all" />
-<link rel="stylesheet" href="../css/alas08.css<?php echo '?'.time();?>" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/alas08.css<?php  echo '?'.time();?>" type="text/css" media="screen" />
 <style type="text/css">
 <!--
 .gal {padding:30px;margin:30px auto 30px auto;width:600px;background-color:#000033;
@@ -188,128 +190,128 @@ color:#FFFFFF}
       </object></td>
   </tr>
 </table>
-<?php 
+<?php  
 $torna="admin_apartat.php?like=$like";
 if (isset($_GET["mnu"])) $torna="../admenu.php?fitxa=".$_GET["mnu"];
 
 ?>
-<p align="center">[<a href="<?echo $torna?>"><strong>&lt;&lt;atr&aacute;s</strong></a>] | [<a href="admin_apartat.php?like=<? echo $like?>">llistat</a>] | [<a href="#texto">textos</a>] | [<a href="#imagenes">im&aacute;genes</a>] |   [<a href="#link">link</a>] | [<a href="#info">info</a>] | [<a href="../alas.php?fitxa=<? echo $row_Recordset1['apartat']?>" target="_blank">ver esta fitxa</a>]</p>
+<p align="center">[<a href="<?php echo $torna?>"><strong>&lt;&lt;atr&aacute;s</strong></a>] | [<a href="admin_apartat.php?like=<?php  echo $like?>">llistat</a>] | [<a href="#texto">textos</a>] | [<a href="#imagenes">im&aacute;genes</a>] |   [<a href="#link">link</a>] | [<a href="#info">info</a>] | [<a href="../alas.php?fitxa=<?php  echo $row_Recordset1['apartat']?>" target="_blank">ver esta fitxa</a>]</p>
 
 <p align="center"><font color="#990000">Se deben subir las im&aacute;genes y plantillas en la pantalla anterior</font></p>
 
     
-<form method="post" name="form1" action="<?php echo $editFormAction; ?>">
+<form method="post" name="form1" action="<?php  echo $editFormAction; ?>">
   <table>
     <tr valign="baseline">
       <td align="right" nowrap bgcolor="#9999FF">&nbsp;</td>
       <td colspan="2"><input name="submit" type="submit" value="Actualizar registro"></td>
     </tr>
-<?php 
+<?php  
 $n=0;
  if ($camps[0]['visible']){?>
     <tr valign="baseline">
-      <td width="105" align="right" nowrap bgcolor="#9999FF"><?php echo $camps[$n]['nom']?>:</td> 
-      <td colspan="2"><?php //echo $row_Recordset1['apartat']; ?>
-        <input type="text" name="apartax" value="<?php echo $row_Recordset1['apartat']; ?>" size="32"></td>
+      <td width="105" align="right" nowrap bgcolor="#9999FF"><?php  echo $camps[$n]['nom']?>:</td> 
+      <td colspan="2"><?php  //echo $row_Recordset1['apartat']; ?>
+        <input type="text" name="apartax" value="<?php  echo $row_Recordset1['apartat']; ?>" size="32"></td>
     </tr>
-<?php }$n++; if ($camps[$n]['visible']){?>
+<?php  }$n++; if ($camps[$n]['visible']){?>
     
     <tr valign="baseline">
-      <td align="right" nowrap bgcolor="#9999FF"><?php echo $camps[$n]['nom']?>:</td> 
+      <td align="right" nowrap bgcolor="#9999FF"><?php  echo $camps[$n]['nom']?>:</td> 
       <td colspan="2"> 
-        <input type="text" name="descripcio" value="<?php echo $row_Recordset1['descripcio']; ?>" size="32"></td>
+        <input type="text" name="descripcio" value="<?php  echo $row_Recordset1['descripcio']; ?>" size="32"></td>
     </tr>
-<?php 
+<?php  
 }else{?>
-            <input type="hidden" name="descripcio" value="<?php echo $row_Recordset1['descripcio']; ?>" size="32">
+            <input type="hidden" name="descripcio" value="<?php  echo $row_Recordset1['descripcio']; ?>" size="32">
 
-<?}$n++; if ($camps[$n]['visible']){?>
+<?php }$n++; if ($camps[$n]['visible']){?>
     <tr valign="baseline">
-      <td align="right" nowrap bgcolor="#9999FF"><?php echo $camps[$n]['nom']?>:</td> 
+      <td align="right" nowrap bgcolor="#9999FF"><?php  echo $camps[$n]['nom']?>:</td> 
       <td><select name="plantilla" >
         <option value=""></option>
-        <?php $files=scan_Dir('../plantilles/',"html;htm;php;lbi");
+        <?php  $files=scan_Dir('../plantilles/',"html;htm;php;lbi");
 	
 	foreach ($files as $kay => $val)
 	{
         $diana=strcmp($row_Recordset1['plantilla'], $val) ?>
-        <option value="<?php echo $val?>"  <?php if (!($diana)) {echo " SELECTED";}?>><?php echo $val?></option>
-        <?php }?>
+        <option value="<?php  echo $val?>"  <?php  if (!($diana)) {echo " SELECTED";}?>><?php  echo $val?></option>
+        <?php  }?>
       </select></td>
       <td>&nbsp;</td>
     </tr>
-<?php }$n++; if ($camps[$n]['visible']){?>
+<?php  }$n++; if ($camps[$n]['visible']){?>
     <tr valign="baseline">
-      <td align="right" nowrap bgcolor="#9999FF"><?php echo $camps[$n]['nom']?></td> 
+      <td align="right" nowrap bgcolor="#9999FF"><?php  echo $camps[$n]['nom']?></td> 
       <td colspan="2"> 
-        <input type="text" name="nom_cs" value="<?php echo $row_Recordset1['nom_cs']; ?>" size="32"></td>
+        <input type="text" name="nom_cs" value="<?php  echo $row_Recordset1['nom_cs']; ?>" size="32"></td>
     </tr>
-<?php }$n++; if ($camps[$n]['visible']){?>
+<?php  }$n++; if ($camps[$n]['visible']){?>
     <tr valign="baseline">
-      <td align="right" nowrap bgcolor="#9999FF"><?php echo $camps[$n]['nom']?>:</td> 
+      <td align="right" nowrap bgcolor="#9999FF"><?php  echo $camps[$n]['nom']?>:</td> 
       <td colspan="2"> 
-        <input type="text" name="nom_ct" value="<?php echo $row_Recordset1['nom_ct']; ?>" size="32"></td>
+        <input type="text" name="nom_ct" value="<?php  echo $row_Recordset1['nom_ct']; ?>" size="32"></td>
     </tr>
-<?php }$n++; if ($camps[$n]['visible']){?>
+<?php  }$n++; if ($camps[$n]['visible']){?>
     <tr valign="baseline">
-      <td align="right" nowrap bgcolor="#9999FF"><?php echo $camps[$n]['nom']?>:</td> 
+      <td align="right" nowrap bgcolor="#9999FF"><?php  echo $camps[$n]['nom']?>:</td> 
       <td colspan="2"> 
         
         
         <select name="profe" >
           <option value=""></option>     
-      <?mysql_select_db($database_alas, $alas);
+      <?php  mysql_select_db($database_alas, $alas);
     $query = "SELECT * FROM apartats2013 WHERE apartat LIKE 'F99%' AND apartat<>'F9999' AND nom_cs<>'' ORDER BY nom_cs";
     $rs = mysql_query($query, $alas) or die(mysql_error());      
       
      while ($profe = mysql_fetch_assoc($rs))
 	{   
         $diana=strcmp($row_Recordset1['profe'], $profe['apartat']) ?>
-          <option value="<?php echo $profe['apartat']?>"  <?php if (!($diana)) {echo " SELECTED";}?>><?php echo $profe['nom_cs']?></option>
-          <?php }?>
+          <option value="<?php  echo $profe['apartat']?>"  <?php  if (!($diana)) {echo " SELECTED";}?>><?php  echo $profe['nom_cs']?></option>
+          <?php  }?>
        </select>
         </td>
     </tr>
-<?php }$n++; if ($camps[$n]['visible']){?>
+<?php  }$n++; if ($camps[$n]['visible']){?>
     <tr valign="baseline">
-      <td align="right" nowrap bgcolor="#9999FF"><?php echo $camps[$n]['nom']?></td>
+      <td align="right" nowrap bgcolor="#9999FF"><?php  echo $camps[$n]['nom']?></td>
       <td colspan="2">
       
         <select name="profe2" >
           <option value=""></option>     
-      <?mysql_select_db($database_alas, $alas);
+      <?php  mysql_select_db($database_alas, $alas);
     $query = "SELECT * FROM apartats2013 WHERE apartat LIKE 'F99%' AND apartat<>'F9999' AND nom_cs<>'' ORDER BY nom_cs";
     $rs = mysql_query($query, $alas) or die(mysql_error());      
       
      while ($profe = mysql_fetch_assoc($rs))
 	{   
         $diana=strcmp($row_Recordset1['profe2'], $profe['apartat']) ?>
-          <option value="<?php echo $profe['apartat']?>"  <?php if (!($diana)) {echo " SELECTED";}?>><?php echo $profe['nom_cs']?></option>
-          <?php }?>
+          <option value="<?php  echo $profe['apartat']?>"  <?php  if (!($diana)) {echo " SELECTED";}?>><?php  echo $profe['nom_cs']?></option>
+          <?php  }?>
        </select>
       
       </td>
     </tr>
-<?php }$n++; if ($camps[$n]['visible']){?>
+<?php  }$n++; if ($camps[$n]['visible']){?>
     <tr valign="baseline">
-      <td align="right" nowrap bgcolor="#9999FF"><?php echo $camps[$n]['nom']?></td>
+      <td align="right" nowrap bgcolor="#9999FF"><?php  echo $camps[$n]['nom']?></td>
       <td colspan="2">
         <select name="profe3" >
           <option value=""></option>     
-      <?mysql_select_db($database_alas, $alas);
+      <?php  mysql_select_db($database_alas, $alas);
     $query = "SELECT * FROM apartats2013 WHERE apartat LIKE 'F99%' AND apartat<>'F9999' AND nom_cs<>'' ORDER BY nom_cs";
     $rs = mysql_query($query, $alas) or die(mysql_error());      
       
      while ($profe = mysql_fetch_assoc($rs))
 	{   
         $diana=strcmp($row_Recordset1['profe3'], $profe['apartat']) ?>
-          <option value="<?php echo $profe['apartat']?>"  <?php if (!($diana)) {echo " SELECTED";}?>><?php echo $profe['nom_cs']?></option>
-          <?php }?>
+          <option value="<?php  echo $profe['apartat']?>"  <?php  if (!($diana)) {echo " SELECTED";}?>><?php  echo $profe['nom_cs']?></option>
+          <?php  }?>
        </select>
       
       </td>
     </tr>
-<?php }$n++; if ($camps[$n]['visible']){
+<?php  }$n++; if ($camps[$n]['visible']){
 ?>
     <tr valign="baseline">
       <td align="right" nowrap bgcolor="#9999FF">&nbsp;</td>
@@ -318,10 +320,10 @@ $n=0;
 
 
     <tr valign="baseline">
-      <td align="right" valign="top" nowrap bgcolor="#9999FF"><a name="texto"></a><?php echo $camps[$n]['nom']?>:</td> 
+      <td align="right" valign="top" nowrap bgcolor="#9999FF"><a name="texto"></a><?php  echo $camps[$n]['nom']?>:</td> 
       <td colspan="2"> 
         
-            <?php                
+            <?php                 
             $oFCKeditor = new FCKeditor('text_cs') ;
             $oFCKeditor->BasePath = 'fckeditor/' ;
             $oFCKeditor->Width = 690 ;
@@ -333,11 +335,11 @@ $n=0;
  
  </td>
     </tr>
-<?php }$n++; if ($camps[$n]['visible']){?>
+<?php  }$n++; if ($camps[$n]['visible']){?>
     <tr valign="baseline">
-      <td align="right" valign="top" nowrap bgcolor="#9999FF"><?php echo $camps[$n]['nom']?>:</td> 
+      <td align="right" valign="top" nowrap bgcolor="#9999FF"><?php  echo $camps[$n]['nom']?>:</td> 
       <td colspan="2"> 
-            <?php                
+            <?php                 
             $oFCKeditor2 = new FCKeditor('text_ct') ;
             $oFCKeditor2->BasePath = 'fckeditor/' ;
             $oFCKeditor2->Width = 690 ;
@@ -346,11 +348,11 @@ $n=0;
             ?>
       </td>
     </tr>
-<?php }$n++; if ($camps[$n]['visible']){?>
+<?php  }$n++; if ($camps[$n]['visible']){?>
     <tr valign="baseline">
-      <td align="right" valign="top" nowrap bgcolor="#9999FF"><?php echo $camps[$n]['nom']?>:</td> 
+      <td align="right" valign="top" nowrap bgcolor="#9999FF"><?php  echo $camps[$n]['nom']?>:</td> 
       <td colspan="2"> 
-            <?php                
+            <?php                 
             $oFCKeditor3 = new FCKeditor('text2_cs') ;
             $oFCKeditor3->BasePath = 'fckeditor/' ;
             $oFCKeditor3->Width = 690 ;
@@ -359,11 +361,11 @@ $n=0;
             ?>
       </td>
     </tr>
-<?php }$n++; if ($camps[$n]['visible']){?>
+<?php  }$n++; if ($camps[$n]['visible']){?>
     <tr valign="baseline">
-      <td align="right" valign="top" nowrap bgcolor="#9999FF"><?php echo $camps[$n]['nom']?>:</td> 
+      <td align="right" valign="top" nowrap bgcolor="#9999FF"><?php  echo $camps[$n]['nom']?>:</td> 
       <td colspan="2"> 
-            <?php                
+            <?php                 
             $oFCKeditor4 = new FCKeditor('text2_ct') ;
             $oFCKeditor4->BasePath = 'fckeditor/' ;
             $oFCKeditor4->Width = 690 ;
@@ -372,11 +374,11 @@ $n=0;
             ?>
       </td>
     </tr>
-<?php }$n++; if ($camps[$n]['visible']){?>
+<?php  }$n++; if ($camps[$n]['visible']){?>
     <tr valign="baseline">
-      <td align="right" valign="top" nowrap bgcolor="#9999FF"><?php echo $camps[$n]['nom']?>:</td> 
+      <td align="right" valign="top" nowrap bgcolor="#9999FF"><?php  echo $camps[$n]['nom']?>:</td> 
       <td colspan="2"> 
-            <?php                
+            <?php                 
             $oFCKeditor5 = new FCKeditor('text3_cs') ;
             $oFCKeditor5->BasePath = 'fckeditor/' ;
             $oFCKeditor5->Width = 690 ;
@@ -385,11 +387,11 @@ $n=0;
             ?>
       </td>
     </tr>
-<?php }$n++; if ($camps[$n]['visible']){?>
+<?php  }$n++; if ($camps[$n]['visible']){?>
     <tr valign="baseline">
-      <td align="right" valign="top" nowrap bgcolor="#9999FF"><?php echo $camps[$n]['nom']?>:</td> 
+      <td align="right" valign="top" nowrap bgcolor="#9999FF"><?php  echo $camps[$n]['nom']?>:</td> 
       <td colspan="2"> 
-            <?php                
+            <?php                 
             $oFCKeditor6 = new FCKeditor('text3_ct') ;
             $oFCKeditor6->BasePath = 'fckeditor/' ;
             $oFCKeditor6->Width = 690 ;
@@ -398,11 +400,11 @@ $n=0;
             ?>
       </td>
     </tr>
-<?php }$n++; if ($camps[$n]['visible']){?>
+<?php  }$n++; if ($camps[$n]['visible']){?>
     <tr valign="baseline">
-      <td align="right" valign="top" nowrap bgcolor="#9999FF"><?php echo $camps[$n]['nom']?>:</td> 
+      <td align="right" valign="top" nowrap bgcolor="#9999FF"><?php  echo $camps[$n]['nom']?>:</td> 
       <td colspan="2"> 
-            <?php                
+            <?php                 
             $oFCKeditor7 = new FCKeditor('text4_cs') ;
             $oFCKeditor7->BasePath = 'fckeditor/' ;
             $oFCKeditor7->Width = 690 ;
@@ -411,11 +413,11 @@ $n=0;
             ?>
       </td>
     </tr>
-<?php }$n++; if ($camps[$n]['visible']){?>
+<?php  }$n++; if ($camps[$n]['visible']){?>
     <tr valign="baseline">
-      <td align="right" valign="top" nowrap bgcolor="#9999FF"><?php echo $camps[$n]['nom']?>:</td> 
+      <td align="right" valign="top" nowrap bgcolor="#9999FF"><?php  echo $camps[$n]['nom']?>:</td> 
       <td colspan="2"> 
-            <?php                
+            <?php                 
             $oFCKeditor8 = new FCKeditor('text4_ct') ;
             $oFCKeditor8->BasePath = 'fckeditor/' ;
             $oFCKeditor8->Width = 690 ;
@@ -424,7 +426,7 @@ $n=0;
             ?>
       </td>
     </tr>
-<?php }$n++; if ($camps[$n]['visible']){?>
+<?php  }$n++; if ($camps[$n]['visible']){?>
     <tr valign="baseline">
       <td align="right" nowrap bgcolor="#9999FF">&nbsp;</td>
       <td colspan="2"><input name="submit" type="submit" value="Actualizar registro"></td>
@@ -432,9 +434,9 @@ $n=0;
 
 
     <tr valign="baseline">
-      <td align="right" valign="top" nowrap bgcolor="#9999FF"><?php echo $camps[$n]['nom']?>:</td>
+      <td align="right" valign="top" nowrap bgcolor="#9999FF"><?php  echo $camps[$n]['nom']?>:</td>
       <td colspan="2">
-            <?php                
+            <?php                 
             $oFCKeditor9 = new FCKeditor('subtitol_cs') ;
             $oFCKeditor9->BasePath = 'fckeditor/' ;
             $oFCKeditor9->Width = 690 ;
@@ -443,11 +445,11 @@ $n=0;
             ?>
       </td>
     </tr>
-<?php }$n++; if ($camps[$n]['visible']){?>
+<?php  }$n++; if ($camps[$n]['visible']){?>
     <tr valign="baseline">
-      <td align="right" valign="top" nowrap bgcolor="#9999FF"><?php echo $camps[$n]['nom']?>:</td>
+      <td align="right" valign="top" nowrap bgcolor="#9999FF"><?php  echo $camps[$n]['nom']?>:</td>
       <td colspan="2">
-            <?php                
+            <?php                 
             $oFCKeditor10 = new FCKeditor('subtitol_ct') ;
             $oFCKeditor10->BasePath = 'fckeditor/' ;
             $oFCKeditor10->Width = 690 ;
@@ -456,7 +458,7 @@ $n=0;
             ?>
       </td>
     </tr>
-<?php }$n++; if ($camps[$n]['visible']){?>
+<?php  }$n++; if ($camps[$n]['visible']){?>
     <tr valign="baseline">
       <td align="right" nowrap bgcolor="#9999FF">&nbsp;</td>
       <td colspan="2"><input name="submit" type="submit" value="Actualizar registro"></td>
@@ -464,58 +466,58 @@ $n=0;
 
 
     <tr valign="baseline">
-      <td align="right" nowrap bgcolor="#9999FF"><a name="imagenes"></a><?php echo $camps[$n]['nom']?>:</td> 
+      <td align="right" nowrap bgcolor="#9999FF"><a name="imagenes"></a><?php  echo $camps[$n]['nom']?>:</td> 
       <td width="273"> 
-        <? 
-        if (isset($row_Recordset1['img_fons'])){?><img src="../imatges/<?php echo $row_Recordset1['img_fons']?>" width="100%" /><?}?>
+        <?php  
+        if (isset($row_Recordset1['img_fons'])){?><img src="../imatges/<?php  echo $row_Recordset1['img_fons']?>" width="100%" /><?php }?>
         <select name="img_fons" >
           <option value=""></option>
-          <?php $files=scan_Dir('../imatges/',"gif;jpg;jpeg;swf");
+          <?php  $files=scan_Dir('../imatges/',"gif;jpg;jpeg;swf");
 	foreach ($files as $kay => $val)
 	{
         $diana=strcmp($row_Recordset1['img_fons'], $val) ?>
-          <option value="<?php echo $val?>"  <?php if (!($diana)) {echo " SELECTED";}?>><?php echo $val?></option>
-          <?php }?>
+          <option value="<?php  echo $val?>"  <?php  if (!($diana)) {echo " SELECTED";}?>><?php  echo $val?></option>
+          <?php  }?>
         </select></td>
       <td width="102"><a href="fotos.php" target="_blank">Ver im&aacute;genes</a> </td>
     </tr>
- <?php }$n++; if ($camps[$n]['visible']){?>
+ <?php  }$n++; if ($camps[$n]['visible']){?>
    <tr valign="baseline">
-      <td align="right" nowrap bgcolor="#9999FF"><?php echo $camps[$n]['nom']?>:</td> 
+      <td align="right" nowrap bgcolor="#9999FF"><?php  echo $camps[$n]['nom']?>:</td> 
       <td> 
         <div align="left">
-        <? if (isset($row_Recordset1['img'])){?><img src="../imatges/<?php echo $row_Recordset1['img']?>" width="100%" /><?}?>
+        <?php  if (isset($row_Recordset1['img'])){?><img src="../imatges/<?php  echo $row_Recordset1['img']?>" width="100%" /><?php }?>
           <select name="img" >
             <option value=""></option>
-          <?php $files=scan_Dir('../imatges/',"gif;jpg;jpeg;swf");
+          <?php  $files=scan_Dir('../imatges/',"gif;jpg;jpeg;swf");
 	
 	foreach ($files as $kay => $val)
 	{
         $diana=strcmp($row_Recordset1['img'], $val) ?>
-            <option value="<?php echo $val?>"  <?php if (!($diana)) {echo " SELECTED";}?>><?php echo $val?></option>
-            <?php }?>
+            <option value="<?php  echo $val?>"  <?php  if (!($diana)) {echo " SELECTED";}?>><?php  echo $val?></option>
+            <?php  }?>
           </select>
         </div></td>
       <td>&nbsp;</td>
     </tr>
-<?php }$n++; if ($camps[$n]['visible']){?>
+<?php  }$n++; if ($camps[$n]['visible']){?>
     <tr valign="baseline">
-      <td align="right" nowrap bgcolor="#9999FF"><?php echo $camps[$n]['nom']?>:</td> 
+      <td align="right" nowrap bgcolor="#9999FF"><?php  echo $camps[$n]['nom']?>:</td> 
       <td> 
-        <? if (isset($row_Recordset1['img2'])){?><img src="../css/<?php echo $row_Recordset1['img2']?>" width="100%" /><?}?>
+        <?php  if (isset($row_Recordset1['img2'])){?><img src="../css/<?php  echo $row_Recordset1['img2']?>" width="100%" /><?php }?>
         <select name="img2" >
           <option value=""></option>
-          <?php $files=scan_Dir('../imatges/',"gif;jpg;jpeg;swf");
+          <?php  $files=scan_Dir('../imatges/',"gif;jpg;jpeg;swf");
 	
 	foreach ($files as $kay => $val)
 	{
         $diana=strcmp($row_Recordset1['img2'], $val) ?>
-          <option value="<?php echo $val?>"  <?php if (!($diana)) {echo " SELECTED";}?>><?php echo $val?></option>
-          <?php }?>
+          <option value="<?php  echo $val?>"  <?php  if (!($diana)) {echo " SELECTED";}?>><?php  echo $val?></option>
+          <?php  }?>
         </select></td>
       <td>&nbsp;</td>
     </tr>
-<?php } $n++;if ($camps[$n]['visible']){?>
+<?php  } $n++;if ($camps[$n]['visible']){?>
     <tr valign="baseline">
       <td align="right" nowrap bgcolor="#9999FF">&nbsp;</td>
       <td colspan="2"><input name="submit" type="submit" value="Actualizar registro"></td>
@@ -523,45 +525,45 @@ $n=0;
 
 
     <tr valign="baseline">
-      <td align="right" nowrap bgcolor="#9999FF"><?php echo $camps[$n]['nom']?>:</td> 
+      <td align="right" nowrap bgcolor="#9999FF"><?php  echo $camps[$n]['nom']?>:</td> 
       <td> 
-        <? if (isset($row_Recordset1['img3'])){?><img src="../imatges/<?php echo $row_Recordset1['img3']?>" width="100%" /><?}?>
+        <?php  if (isset($row_Recordset1['img3'])){?><img src="../imatges/<?php  echo $row_Recordset1['img3']?>" width="100%" /><?php }?>
         <select name="img3" >
           <option value=""></option>
-          <?php $files=scan_Dir('../imatges/',"gif;jpg;jpeg;swf");
+          <?php  $files=scan_Dir('../imatges/',"gif;jpg;jpeg;swf");
 	
 	foreach ($files as $kay => $val)
 	{
         $diana=strcmp($row_Recordset1['img3'], $val) ?>
-          <option value="<?php echo $val?>"  <?php if (!($diana)) {echo " SELECTED";}?>><?php echo $val?></option>
-          <?php }?>
+          <option value="<?php  echo $val?>"  <?php  if (!($diana)) {echo " SELECTED";}?>><?php  echo $val?></option>
+          <?php  }?>
         </select></td>
       <td>&nbsp;</td>
     </tr>
- <?php } $n++;if ($camps[$n]['visible']){?>
+ <?php  } $n++;if ($camps[$n]['visible']){?>
    <tr valign="baseline">
-      <td align="right" nowrap bgcolor="#9999FF"><?php echo $camps[$n]['nom']?>:</td> 
+      <td align="right" nowrap bgcolor="#9999FF"><?php  echo $camps[$n]['nom']?>:</td> 
       <td> 
-        <? if (isset($row_Recordset1['img4'])){?><img src="../imatges/<?php echo $row_Recordset1['img4']?>" width="100%" /><?}?>
+        <?php  if (isset($row_Recordset1['img4'])){?><img src="../imatges/<?php  echo $row_Recordset1['img4']?>" width="100%" /><?php }?>
         <select name="img4" >
           <option value=""></option>
-          <?php $files=scan_Dir('../imatges/',"gif;jpg;jpeg;swf");
+          <?php  $files=scan_Dir('../imatges/',"gif;jpg;jpeg;swf");
 	
 	foreach ($files as $kay => $val)
 	{
         $diana=strcmp($row_Recordset1['img4'], $val) ?>
-          <option value="<?php echo $val?>"  <?php if (!($diana)) {echo " SELECTED";}?>><?php echo $val?></option>
-          <?php }?>
+          <option value="<?php  echo $val?>"  <?php  if (!($diana)) {echo " SELECTED";}?>><?php  echo $val?></option>
+          <?php  }?>
         </select></td>
       <td>&nbsp;</td>
     </tr>
-<?php }$n++; if ($camps[$n]['visible']){?>
+<?php  }$n++; if ($camps[$n]['visible']){?>
     <tr valign="baseline">
-      <td align="right" nowrap bgcolor="#9999FF"><?php echo $camps[$n]['nom']?>:</td> 
+      <td align="right" nowrap bgcolor="#9999FF"><?php  echo $camps[$n]['nom']?>:</td> 
       <td colspan="2"> 
-        <input type="text" name="linkprofe" value="<?php echo $row_Recordset1['linkprofe']; ?>" size="32"></td>
+        <input type="text" name="linkprofe" value="<?php  echo $row_Recordset1['linkprofe']; ?>" size="32"></td>
     </tr>
-<?php }$n++; if ($camps[$n]['visible']){?>
+<?php  }$n++; if ($camps[$n]['visible']){?>
     <tr valign="baseline">
       <td align="right" nowrap bgcolor="#9999FF">&nbsp;</td>
       <td colspan="2"><input name="submit" type="submit" value="Actualizar registro"></td>
@@ -569,59 +571,87 @@ $n=0;
 
 
     <tr valign="baseline">
-      <td align="right" nowrap bgcolor="#9999FF"><a name="link"></a><?php echo $camps[$n]['nom']?>:</td> 
+      <td align="right" nowrap bgcolor="#9999FF"><a name="link"></a><?php  echo $camps[$n]['nom']?>:</td> 
       <td colspan="2"> 
-        <input type="text" name="link" value="<?php echo $row_Recordset1['link']; ?>" size="32"></td>
+        <input type="text" name="link" value="<?php  echo $row_Recordset1['link']; ?>" size="32"></td>
     </tr>
-<?php } $n++;if ($camps[$n]['visible']){?>
+<?php  } $n++;if ($camps[$n]['visible']){?>
     <tr valign="baseline">
-      <td align="right" nowrap bgcolor="#9999FF"><?php echo $camps[$n]['nom']?>:</td> 
+      <td align="right" nowrap bgcolor="#9999FF"><?php  echo $camps[$n]['nom']?>:</td> 
       <td colspan="2"> 
-        <input type="text" name="link2" value="<?php echo $row_Recordset1['link2']; ?>" size="32"></td>
+        <input type="text" name="link2" value="<?php  echo $row_Recordset1['link2']; ?>" size="32"></td>
     </tr>
-<?php }$n++; if ($camps[$n]['visible']){?>
+<?php  }$n++; if ($camps[$n]['visible']){?>
     <tr valign="baseline">
-      <td align="right" nowrap bgcolor="#9999FF"><?php echo $camps[$n]['nom']?>:</td> 
+      <td align="right" nowrap bgcolor="#9999FF"><?php  echo $camps[$n]['nom']?>:</td> 
       <td colspan="2"> 
-        <input type="text" name="link3" value="<?php echo $row_Recordset1['link3']; ?>" size="32"></td>
+        <input type="text" name="link3" value="<?php  echo $row_Recordset1['link3']; ?>" size="32"></td>
     </tr>
-<?php }$n++; if ($camps[$n]['visible']){?>
+<?php  }$n++; if ($camps[$n]['visible']){?>
     <tr valign="baseline">
-      <td align="right" nowrap bgcolor="#9999FF"><?php echo $camps[$n]['nom']?>:</td> 
+      <td align="right" nowrap bgcolor="#9999FF"><?php  echo $camps[$n]['nom']?>:</td> 
       <td colspan="2"> 
-        <input type="text" name="link4" value="<?php echo $row_Recordset1['link4']; ?>" size="32"></td>
+        <input type="text" name="link4" value="<?php  echo $row_Recordset1['link4']; ?>" size="32"></td>
     </tr>
-<?php }$n++; if ($camps[$n]['visible']){?>
+<?php  }$n++; if ($camps[$n]['visible']){?>
     <tr valign="baseline">
-      <td align="right" nowrap bgcolor="#9999FF"><?php echo $camps[$n]['nom']?>:</td> 
+      <td align="right" nowrap bgcolor="#9999FF"><?php  echo $camps[$n]['nom']?>:</td> 
       <td colspan="2"> 
-        <input type="text" name="color" value="<?php echo $row_Recordset1['color']; ?>" size="32"></td>
+        <input type="text" name="color" value="<?php  echo $row_Recordset1['color']; ?>" size="32"></td>
     </tr>
-<?php }$n++; if ($camps[$n]['visible']){?>
+<?php  }$n++; if ($camps[$n]['visible']){?>
     <tr valign="baseline">
-      <td align="right" nowrap bgcolor="#9999FF"><?php echo $camps[$n]['nom']?>:</td> 
+      <td align="right" nowrap bgcolor="#9999FF"><?php  echo $camps[$n]['nom']?>:</td> 
       <td colspan="2"> 
-        <input type="text" name="n_fitxes" value="<?php echo $row_Recordset1['n_fitxes']; ?>" size="32"></td>
+        <input type="text" name="n_fitxes" value="<?php  echo $row_Recordset1['n_fitxes']; ?>" size="32"></td>
     </tr>
-<?php }$n=30; if ($camps[$n]['visible']){?>
+<?php  }$n=30; if ($camps[$n]['visible']){?>
     <tr valign="baseline">
-      <td align="right" nowrap bgcolor="#9999FF"><?php echo $camps[$n]['nom']?>:</td> 
+      <td align="right" nowrap bgcolor="#9999FF"><?php  echo $camps[$n]['nom']?>:</td> 
       <td colspan="2"> 
-        <input type="checkbox" name="calendario" value="calendario" <?php if ($row_Recordset1['calendario']) echo 'checked="checked"' ?> size="32"></td>
+        <input type="checkbox" name="calendario" value="calendario" <?php  if ($row_Recordset1['calendario']) echo 'checked="checked"' ?> size="32"></td>
     </tr>
-<?php }$n=32; if ($camps[$n]['visible']){?>
+<?php  }$n=32; if ($camps[$n]['visible']){?>
     <tr valign="baseline" class="data-toggle">
-      <td align="right" nowrap bgcolor="#9999FF"><?php echo $camps[$n]['nom']?>:</td> 
+      <td align="right" nowrap bgcolor="#9999FF"><?php  echo $camps[$n]['nom']?>:</td> 
       <td colspan="2"> 
-        <input type="text" name="data" class="datepicker" value="<?php echo $row_Recordset1['data']?>" size="32"></td>
+        <input type="text" name="data" class="datepicker" value="<?php  echo $row_Recordset1['data']?>" size="32"></td>
     </tr>
-<?php }$n=31; if ($camps[$n]['visible']){?>
+<?php  }$n=33; if ($camps[$n]['visible']){?>
+    <tr valign="baseline" class="data-toggle">
+      <td align="right" nowrap bgcolor="#9999FF"><?php  echo $camps[$n]['nom']?>:</td> 
+      <td colspan="2"> 
+                   <?php                 
+            $oFCKeditor = new FCKeditor('text_calendari_cs') ;
+            $oFCKeditor->BasePath = 'fckeditor/' ;
+            $oFCKeditor->Width = 690 ;
+            $oFCKeditor->Height = 200 ;
+            $oFCKeditor->Value = $row_Recordset1['text_calendari_cs']; 
+            $oFCKeditor->Create() ;
+            ?>
+      </td>
+    </tr>
+<?php  }$n=34; if ($camps[$n]['visible']){?>
+    <tr valign="baseline" class="data-toggle">
+      <td align="right" nowrap bgcolor="#9999FF"><?php  echo $camps[$n]['nom']?>:</td> 
+      <td colspan="2"> 
+                   <?php                 
+            $oFCKeditor = new FCKeditor('text_calendari_ct') ;
+            $oFCKeditor->BasePath = 'fckeditor/' ;
+            $oFCKeditor->Width = 690 ;
+            $oFCKeditor->Height = 200 ;
+            $oFCKeditor->Value = $row_Recordset1['text_calendari_ct']; 
+            $oFCKeditor->Create() ;
+            ?>
+      </td>
+    </tr>
+<?php  }$n=31; if ($camps[$n]['visible']){?>
     <tr valign="baseline">
-      <td align="right" nowrap bgcolor="#9999FF"><?php echo $camps[$n]['nom']?>:</td> 
+      <td align="right" nowrap bgcolor="#9999FF"><?php  echo $camps[$n]['nom']?>:</td> 
       <td colspan="2"> 
-        <input type="checkbox" name="publicado" value="publicado" <?php if ($row_Recordset1['publicado']) echo 'checked="checked"' ?> size="32"></td>
+        <input type="checkbox" name="publicado" value="publicado" <?php  if ($row_Recordset1['publicado']) echo 'checked="checked"' ?> size="32"></td>
     </tr>
-<? } ?>
+<?php  } ?>
     <tr valign="baseline">
       <td align="right" nowrap bgcolor="#9999FF">&nbsp;</td> 
       <td colspan="2"> 
@@ -629,12 +659,12 @@ $n=0;
     </tr>
   </table>
   <input type="hidden" name="MM_update" value="form1">
-  <input type="hidden" name="apartat" value="<?php echo $row_Recordset1['apartat']; ?>">
+  <input type="hidden" name="apartat" value="<?php  echo $row_Recordset1['apartat']; ?>">
 </form>
 
 </body>
 </html>
-<?php
+<?php 
 mysql_free_result($Recordset1);
 
 
@@ -654,6 +684,8 @@ function camps($tipus='F')
             $i=24;$camps[$i]['nom']="Link<br>Dentro de ALAS: alas.php?fitxa=FXXXX<br>Fuera de ALAS: http://";$camps[$i]['visible']=1;
             $i=31;$camps[$i]['nom']="publicado";$camps[$i]['visible']=1;
             $i=32;$camps[$i]['nom']="Fecha";$camps[$i]['visible']=1;
+            $i=33;$camps[$i]['nom']="Texto calendario_CS";$camps[$i]['visible']=1;
+            $i=34;$camps[$i]['nom']="Texto calendario_CT";$camps[$i]['visible']=1;
 
         break;
     
@@ -666,6 +698,8 @@ function camps($tipus='F')
             $i=9;$camps[$i]['nom']="Text_CT";$camps[$i]['visible']=1;
             $i=31;$camps[$i]['nom']="publicado";$camps[$i]['visible']=1;
             $i=32;$camps[$i]['nom']="Fecha";$camps[$i]['visible']=1;
+            $i=33;$camps[$i]['nom']="Texto calendario_CS";$camps[$i]['visible']=1;
+            $i=34;$camps[$i]['nom']="Texto calendario_CT";$camps[$i]['visible']=1;
 
         break;
             
@@ -688,6 +722,8 @@ function camps($tipus='F')
             $i=24;$camps[$i]['nom']="Enllaç YouTube";$camps[$i]['visible']=1;
             $i=31;$camps[$i]['nom']="publicado";$camps[$i]['visible']=1;
             $i=32;$camps[$i]['nom']="Fecha";$camps[$i]['visible']=1;
+            $i=33;$camps[$i]['nom']="Texto calendario_CS";$camps[$i]['visible']=1;
+            $i=34;$camps[$i]['nom']="Texto calendario_CT";$camps[$i]['visible']=1;
         break;
         
         case 'F':
@@ -725,6 +761,8 @@ function camps($tipus='F')
             $i=30;$camps[$i]['nom']="calendario";$camps[$i]['visible']=1;
             $i=31;$camps[$i]['nom']="publicado";$camps[$i]['visible']=1;
             $i=32;$camps[$i]['nom']="Fecha";$camps[$i]['visible']=1;
+             $i=33;$camps[$i]['nom']="Texto calendario_CS";$camps[$i]['visible']=1;
+             $i=34;$camps[$i]['nom']="Texto calendario_CT";$camps[$i]['visible']=1;
         break;
         
 		case 'M':
@@ -760,6 +798,8 @@ function camps($tipus='F')
             $i++;$camps[$i]['nom']="n_fitxes";$camps[$i]['visible']=1;
             $i=31;$camps[$i]['nom']="publicado";$camps[$i]['visible']=1;
             $i=32;$camps[$i]['nom']="Fecha";$camps[$i]['visible']=1;
+            $i=33;$camps[$i]['nom']="Texto calendario_CS";$camps[$i]['visible']=1;
+            $i=34;$camps[$i]['nom']="Texto calendario_CT";$camps[$i]['visible']=1;
 		break;
     
      default:
@@ -796,6 +836,8 @@ function camps($tipus='F')
             $i=30;$camps[$i]['nom']="calendario";$camps[$i]['visible']=1;
             $i=31;$camps[$i]['nom']="publicado";$camps[$i]['visible']=1;
             $i=32;$camps[$i]['nom']="Fecha";$camps[$i]['visible']=1;
+            $i=33;$camps[$i]['nom']="Texto calendario_CS";$camps[$i]['visible']=1;
+            $i=34;$camps[$i]['nom']="Texto calendario_CT";$camps[$i]['visible']=1;
      break;
 	     
    }   
