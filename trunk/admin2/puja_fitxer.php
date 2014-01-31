@@ -1,4 +1,4 @@
-<?php
+<?php 
 require_once("../script/alex100.inc");
 
 if (!isset($max_size)) $max_size=100000;
@@ -28,13 +28,13 @@ if (isset($_FILES['userfile']['name']))
 			
 		} else {?>
 <div align="center" class="alerta">----------------&gt;&gt;&gt;&gt;ERROR AL SUBIR LA IMAGEN !!! &lt;&lt;&lt;&lt;--------------</div>
-		<? }
+		<?php  }
  	}
 ?><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
 <title>Documento sin t&iacute;tulo</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <style type="text/css">
 <!--
 body,td,th {
@@ -78,8 +78,8 @@ color:#FFFFFF}
 </table>
 <br>&nbsp;&nbsp;&nbsp; <a href="admin_apartat.php">[&lt;&lt;Atr�s]</a>&nbsp;&nbsp;|&nbsp;&nbsp;[<a href="puja_fitxer.php?filtre=gif;jpg;jpeg&image_root=../galeria/">Galer�a</a>]&nbsp;&nbsp;|&nbsp;&nbsp;[<a href="puja_fitxer.php?filtre=gif;jpg;jpeg&image_root=../imatges/">Im�genes / Fondos</a>]&nbsp;&nbsp;
 </a>
-<form enctype="multipart/form-data" action="puja_fitxer.php?filtre=<?php echo $filtre?>&image_root=<?php echo $image_root?>" method="post"  >
-  <p align="center" class="Estilo1">S&oacute;lo se admiten archivos <?php echo $filtre ?> con 100Kb de tama&ntilde;o m&aacute;ximo. Para archivos grandes o, en caso de error, acceder con [<a href="ftp://ftp.alasbcn.com/html" target="_blank">Conexi�n FTP</a>]-&gt; user: alasbcn.com / pass: alas    </p>
+<form enctype="multipart/form-data" action="puja_fitxer.php?filtre=<?php  echo $filtre?>&image_root=<?php  echo $image_root?>" method="post"  >
+  <p align="center" class="Estilo1">S&oacute;lo se admiten archivos <?php  echo $filtre ?> con 100Kb de tama&ntilde;o m&aacute;ximo. Para archivos grandes o, en caso de error, acceder con [<a href="ftp://ftp.alasbcn.com/html" target="_blank">Conexi�n FTP</a>]-&gt; user: alasbcn.com / pass: alas    </p>
   <p align="left">
     <input type="hidden" name="MAX_FILE_SIZE" value="100000">
   Archivo de imagen:
@@ -104,23 +104,23 @@ color:#FFFFFF}
   </div>
   <p>&nbsp;</p>
 </form>
-<?php 
+<?php  
 if ((isset($_FILES['userfile']['name']))&&(!(empty($_FILES['userfile']['name']))))
 	{
 ?>
-<div align="center">El archivo se ha copiado correctamente en <?php echo  $destino;?></div>
-<?php 		
+<div align="center">El archivo se ha copiado correctamente en <?php  echo  $destino;?></div>
+<?php  		
 
 			if (((strpos(strtolower($tipo_archivo), "gif") || strpos(strtolower($tipo_archivo), "jpeg")|| strpos(strtolower($tipo_archivo), "jpg")|| strpos(strtolower($tipo_archivo), "swf")) && ($tamano_archivo < $max_size))) 
 
 
 			{?>
 			<p align="center">&nbsp;</p>
-	<?php }?>
-<?php }?>
+	<?php  }?>
+<?php  }?>
 <p align="center">&nbsp;</p>
 
-<?php $files=scan_Dir($image_root,"gif;jpg;jpeg;swf");
+<?php  $files=scan_Dir($image_root,"gif;jpg;jpeg;swf");
 	
 	foreach ($files as $kay => $val)
 	{

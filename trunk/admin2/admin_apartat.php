@@ -1,4 +1,4 @@
-<?php 
+<?php  
 require_once('../Connections/alasdb.php');
 // COMPROVA SESSIO OBERTA
 //session_start();
@@ -67,7 +67,7 @@ $queryString_Recordset1 = sprintf("&totalRows_Recordset1=%d%s", $totalRows_Recor
 <html>
 <head>
 <title>Documento sin t&iacute;tulo</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>
 
 <body bgcolor="#CCCCFF" link="#0033CC" vlink="#0033CC" alink="#0033CC" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
@@ -95,7 +95,7 @@ $queryString_Recordset1 = sprintf("&totalRows_Recordset1=%d%s", $totalRows_Recor
 <br>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
-    <td><p align="center"><font size="2">+<a href="admin_insert_apartat.php?like=<?echo $like?>"><strong> A&ntilde;adir nueva 
+    <td><p align="center"><font size="2">+<a href="admin_insert_apartat.php?like=<?php echo $like?>"><strong> A&ntilde;adir nueva 
   fitxa </strong></a>+ </font></p></td>
    <td><div align="center"><a href="admin_apartat.php?like="><strong><font size="2">TODO</font></strong></a></div></td>
     <td><div align="center"><a href="admin_apartat.php?like=F0"><strong><font size="2">FICHAS</font></strong></a></div></td>
@@ -117,40 +117,40 @@ $queryString_Recordset1 = sprintf("&totalRows_Recordset1=%d%s", $totalRows_Recor
     <td width="106"> <div align="center"><strong><font color="#000099">profe</font></strong></div></td>
     <td width="116"> <div align="center"><strong><font color="#000099">text</font></strong></div></td>
   </tr>
-  <?php do { ?>
+  <?php  do { ?>
   <tr bgcolor="#CCFFFF"> 
-    <td><font color="#000066" size="2"><a href="admin_modificar_apartat.php?fitxa=<?php echo $row_Recordset1['apartat'] ?>&like=<? echo $like ?>"><?php echo $row_Recordset1['apartat']; ?></a></font></td>
-    <td><font color="#000066" size="2"><?php echo $row_Recordset1['descripcio']; ?></font></td>
-    <td><font color="#000066" size="2"><?php echo $row_Recordset1['nom_cs']; ?></font></td>
-    <td><font color="#000066" size="2"><?php echo substr($row_Recordset1['profe'],0,12); ?></font></td>
-    <td><font color="#000066" size="2"><?php echo substr($row_Recordset1['text_cs'],0,50); ?></font></td>
-        <td width="108"> <font color="#000066" size="2"><a href="admin_modificar_apartat.php?fitxa=<?php echo $row_Recordset1['apartat'] ?>&like=<? echo $like ?>">Modificar</a> 
-      | <a href="admin_del_apartat.php?fitxa=<?php echo $row_Recordset1['apartat'] ?>&like=<? echo $like ?>"> 
+    <td><font color="#000066" size="2"><a href="admin_modificar_apartat.php?fitxa=<?php  echo $row_Recordset1['apartat'] ?>&like=<?php  echo $like ?>"><?php  echo $row_Recordset1['apartat']; ?></a></font></td>
+    <td><font color="#000066" size="2"><?php  echo $row_Recordset1['descripcio']; ?></font></td>
+    <td><font color="#000066" size="2"><?php  echo $row_Recordset1['nom_cs']; ?></font></td>
+    <td><font color="#000066" size="2"><?php  echo substr($row_Recordset1['profe'],0,12); ?></font></td>
+    <td><font color="#000066" size="2"><?php  echo substr($row_Recordset1['text_cs'],0,50); ?></font></td>
+        <td width="108"> <font color="#000066" size="2"><a href="admin_modificar_apartat.php?fitxa=<?php  echo $row_Recordset1['apartat'] ?>&like=<?php  echo $like ?>">Modificar</a> 
+      | <a href="admin_del_apartat.php?fitxa=<?php  echo $row_Recordset1['apartat'] ?>&like=<?php  echo $like ?>"> 
       Eliminar</a> </font></td>
   </tr>
-  <?php } while ($row_Recordset1 = mysql_fetch_assoc($Recordset1)); ?>
+  <?php  } while ($row_Recordset1 = mysql_fetch_assoc($Recordset1)); ?>
 </table>
 <p> 
 <table border="0" width="150" align="center">
   <tr> 
-    <td width="50" align="center"> <?php if ($pageNum_Recordset1 > 0) { // Show if not first page ?>
-      <a href="<?php printf("%25s?pageNum_Recordset1=%25d%25s", $currentPage, 0, $queryString_Recordset1); ?>">Primero</a> 
-      <?php } // Show if not first page ?> </td>
-    <td width="50" align="center"> <?php if ($pageNum_Recordset1 > 0) { // Show if not first page ?>
-      <a href="<?php printf("%25s?pageNum_Recordset1=%25d%25s", $currentPage, max(0, $pageNum_Recordset1 - 1), $queryString_Recordset1); ?>">Anterior</a> 
-      <?php } // Show if not first page ?> </td>
-    <td width="50" align="center"> <?php if ($pageNum_Recordset1 < $totalPages_Recordset1) { // Show if not last page ?>
-      <a href="<?php printf("%25s?pageNum_Recordset1=%25d%25s", $currentPage, min($totalPages_Recordset1, $pageNum_Recordset1 + 1), $queryString_Recordset1); ?>">Siguiente</a> 
-      <?php } // Show if not last page ?> </td>
-    <td width="50" align="center"> <?php if ($pageNum_Recordset1 < $totalPages_Recordset1) { // Show if not last page ?>
-      <a href="<?php printf("%25s?pageNum_Recordset1=%25d%25s", $currentPage, $totalPages_Recordset1, $queryString_Recordset1); ?>">&Uacute;ltimo</a> 
-      <?php } // Show if not last page ?> </td>
+    <td width="50" align="center"> <?php  if ($pageNum_Recordset1 > 0) { // Show if not first page ?>
+      <a href="<?php  printf("%25s?pageNum_Recordset1=%25d%25s", $currentPage, 0, $queryString_Recordset1); ?>">Primero</a> 
+      <?php  } // Show if not first page ?> </td>
+    <td width="50" align="center"> <?php  if ($pageNum_Recordset1 > 0) { // Show if not first page ?>
+      <a href="<?php  printf("%25s?pageNum_Recordset1=%25d%25s", $currentPage, max(0, $pageNum_Recordset1 - 1), $queryString_Recordset1); ?>">Anterior</a> 
+      <?php  } // Show if not first page ?> </td>
+    <td width="50" align="center"> <?php  if ($pageNum_Recordset1 < $totalPages_Recordset1) { // Show if not last page ?>
+      <a href="<?php  printf("%25s?pageNum_Recordset1=%25d%25s", $currentPage, min($totalPages_Recordset1, $pageNum_Recordset1 + 1), $queryString_Recordset1); ?>">Siguiente</a> 
+      <?php  } // Show if not last page ?> </td>
+    <td width="50" align="center"> <?php  if ($pageNum_Recordset1 < $totalPages_Recordset1) { // Show if not last page ?>
+      <a href="<?php  printf("%25s?pageNum_Recordset1=%25d%25s", $currentPage, $totalPages_Recordset1, $queryString_Recordset1); ?>">&Uacute;ltimo</a> 
+      <?php  } // Show if not last page ?> </td>
   </tr>
 </table></p>
 <p align="center">&nbsp; <font color="#FF6600" size="1">R<font size="2">egistros 
-  <?php echo ($startRow_Recordset1 + 1) ?> a <?php echo min($startRow_Recordset1 + $maxRows_Recordset1, $totalRows_Recordset1) ?> de <?php echo $totalRows_Recordset1 ?></font></font> </p>
+  <?php  echo ($startRow_Recordset1 + 1) ?> a <?php  echo min($startRow_Recordset1 + $maxRows_Recordset1, $totalRows_Recordset1) ?> de <?php  echo $totalRows_Recordset1 ?></font></font> </p>
 </body>
 </html>
-<?php
+<?php 
 mysql_free_result($Recordset1);
 ?>

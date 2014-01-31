@@ -1,4 +1,4 @@
-<?php
+<?php 
 header('Content-Type: text/html; charset=UTF-8');
     require_once('Connections/alasdb.php'); 
     require_once('script/alex100.inc');//if (!valida_admin()) $fitxa='777';
@@ -161,14 +161,14 @@ function printr($var){echo "<pre>";print_r($var);echo "</pre>";}
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <!-- 
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 -->
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
 
-<title><?php echo $title?></title>
+<title><?php  echo $title?></title>
 <style type="text/css">
 	div.horizontal_scroller{
 		position:relative;
@@ -191,7 +191,7 @@ function printr($var){echo "<pre>";print_r($var);echo "</pre>";}
 <script src="script/jquery.Scroller-1.0.min.js" type="text/javascript"></script> 
 <script src="javascript/jquery.validate.min.js" type="text/javascript"></script> 
 <script src="javascript/jquery.form.js" type="text/javascript"></script> 
-<script src="javascript/messages_<?php echo ($lang==ct?'ca':'es'); ?>.js" type="text/javascript"></script> 
+<script src="javascript/messages_<?php  echo ($lang==ct?'ca':'es'); ?>.js" type="text/javascript"></script> 
 <script type="text/javascript">
 	jQuery.noConflict();
 	jQuery(function() {
@@ -225,7 +225,7 @@ function printr($var){echo "<pre>";print_r($var);echo "</pre>";}
     },
 
   });
-      var lang='<?php echo ($lang==ct?'ca':'es'); ?>';
+      var lang='<?php  echo ($lang==ct?'ca':'es'); ?>';
      var options = { 
         target:        '#subscripcio',   // target element(s) to be updated with server response 
         beforeSubmit:  showRequest,  // pre-submit callback 
@@ -275,21 +275,21 @@ function showResponse(responseText, statusText, xhr, $form)  {
 
 </script>
 
-<?php if (($row["nom_cs"]=="GALERIA")||($apartat=="98")||(substr($row["descripcio"],0,4)=="GALE")){//echo "-------------AAAAAAAA>>>>";?>
+<?php  if (($row["nom_cs"]=="GALERIA")||($apartat=="98")||(substr($row["descripcio"],0,4)=="GALE")){//echo "-------------AAAAAAAA>>>>";?>
 	<script type="text/javascript" src="script/prototype.js"></script>
 	<script type="text/javascript" src="script/scriptaculous.js?load=effects,builder"></script>
 	<script type="text/javascript" src="script/lightbox.js"></script>
 	<script type="text/javascript" src="javascript/lightwindow.js"></script>
 	<link rel="stylesheet" href="css/lightbox.css" type="text/css" media="screen" />
 	<link rel="stylesheet" type="text/css" href="css/lightwindow.css" />
-<?php } ?>
+<?php  } ?>
 
 <link rel="shortcut icon" href="css/favicon.ico"> 
-<link href="css/alas08.css<?php echo "?".time();?>" rel="stylesheet" type="text/css">
+<link href="css/alas08.css<?php  echo "?".time();?>" rel="stylesheet" type="text/css">
 </head>
 
 <body>
-<div id="container" class="apartat-<?php echo $apartat?> <?php echo $class_submenu; ?> fitxa-<?php echo $fitxa?> plantilla-<?php $class_plantilla=explode(".lbi",$plantilla);echo $class_plantilla[0]; ?>">
+<div id="container" class="apartat-<?php  echo $apartat?> <?php  echo $class_submenu; ?> fitxa-<?php  echo $fitxa?> plantilla-<?php  $class_plantilla=explode(".lbi",$plantilla);echo $class_plantilla[0]; ?>">
   <div id="menu_isqui">
   	<div id="logo">
   	<!--  
@@ -304,17 +304,17 @@ function showResponse(responseText, statusText, xhr, $form)  {
 		<a href="alas.php?fitxa=F0000"><img src="imatges/logo_alas.png"/></a>
 	</div>
 
-    <?  echo $menu; ?> 
+    <?php   echo $menu; ?> 
   </div>
-  <div id="col_dere" style="background-image:url(<? echo $imag_fons ?>);background-repeat: no-repeat;">	
+  <div id="col_dere" style="background-image:url(<?php  echo $imag_fons ?>);background-repeat: no-repeat;">	
       
         <div id="sobre">
-            <?
+            <?php 
                 echo $sobre;
             ?>
         </div>
-      <div class="titol-submenu"><? if ($class_submenu=="submenu") echo $title;?></div>
-            <?
+      <div class="titol-submenu"><?php  if ($class_submenu=="submenu") echo $title;?></div>
+            <?php 
             //echo $imag_fons;
            // echo ucfirst($row['nom_'.$lang]);
                  $row["fitxa"]=$fitxa;
@@ -326,7 +326,7 @@ function showResponse(responseText, statusText, xhr, $form)  {
 
 <div class="horizontal_scroller corredera" id="no_mouse_events">
 	<div class="scrollingtext">
-		<?php echo $textscroll ?>
+		<?php  echo $textscroll ?>
 	</div>
 </div>
 
@@ -335,7 +335,7 @@ function showResponse(responseText, statusText, xhr, $form)  {
 </div>
 </body>
 </html>
-<?php
+<?php 
 //********************************************************************************************
 //********************************************************************************************
 //   FUNCIONS
@@ -608,6 +608,8 @@ function calendario()
     $row['mes']=ucfirst(strftime("%b",strtotime($row['data'])));
 //    $row['dia']=strftime("%#d",strtotime($row['data']));
     $row['dia']=strftime("%e",strtotime($row['data']));
+    
+    if (empty($row['dia'])) $row['dia']=strftime("%#d",strtotime($row['data']));
     /*
     */   
      if ($row['month']!=$mes) $out.='<h3 class="mesos">'. $nommes.'</h3>';

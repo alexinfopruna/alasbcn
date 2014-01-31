@@ -1,4 +1,4 @@
-<?php require_once('../Connections/alasdb.php');
+<?php  require_once('../Connections/alasdb.php');
 require_once('../script/alex100.inc');if (!valida_admin()) echo '<meta http-equiv="refresh" content="0;URL=nolog.htm">';
 
 /////// LIKE
@@ -60,7 +60,7 @@ $totalRows_Recordset1 = mysql_num_rows($Recordset1);
 <html>
 <head>
 <title>Documento sin t&iacute;tulo</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>
 
 <body bgcolor="#CCCCFF" text="#000066" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
@@ -82,46 +82,46 @@ $totalRows_Recordset1 = mysql_num_rows($Recordset1);
       </object></td>
   </tr>
 </table>
-<p align="center">- <a href="admin_apartat.php?like=<?echo $like?>"><strong>Atr&aacute;s</strong></a> 
+<p align="center">- <a href="admin_apartat.php?like=<?php echo $like?>"><strong>Atr&aacute;s</strong></a> 
   -</p>
 <p align="center"><font color="#FF0000"><strong>Esta operaci&oacute;n no se puede 
   deshacer. Para eliminar la ficha haga click en el bot&oacute;n abajo.</strong></font></p>
 <p align="center">&nbsp;</p>
 
     
-<form method="post" name="form1" action="<?php echo $editFormAction; ?>">
+<form method="post" name="form1" action="<?php  echo $editFormAction; ?>">
   <table align="center">
     <tr valign="baseline"> 
       <td align="right" nowrap bgcolor="#9999FF">Apartat:</td>
-      <td bgcolor="#CCFFFF"><?php echo $row_Recordset1['apartat']; ?></td>
+      <td bgcolor="#CCFFFF"><?php  echo $row_Recordset1['apartat']; ?></td>
     </tr>
     <tr valign="baseline"> 
       <td align="right" nowrap bgcolor="#9999FF">Descripcio:</td>
-      <td bgcolor="#CCFFFF"><?php echo $row_Recordset1['descripcio']; ?></td>
+      <td bgcolor="#CCFFFF"><?php  echo $row_Recordset1['descripcio']; ?></td>
     </tr>
     <tr valign="baseline"> 
       <td align="right" nowrap bgcolor="#9999FF">T&iacute;tulo_cs:</td>
-      <td bgcolor="#CCFFFF"><?php echo $row_Recordset1['nom_cs']; ?></td>
+      <td bgcolor="#CCFFFF"><?php  echo $row_Recordset1['nom_cs']; ?></td>
     </tr>
     <tr valign="baseline"> 
       <td align="right" nowrap bgcolor="#9999FF">Profesor:</td>
-      <td bgcolor="#CCFFFF"><?php echo $row_Recordset1['profe']; ?></td>
+      <td bgcolor="#CCFFFF"><?php  echo $row_Recordset1['profe']; ?></td>
     </tr>
     <tr valign="baseline"> 
       <td align="right" nowrap bgcolor="#9999FF">Texto:</td>
-      <td bgcolor="#CCFFFF"><?php echo $row_Recordset1['text_cs']; ?></td>
+      <td bgcolor="#CCFFFF"><?php  echo $row_Recordset1['text_cs']; ?></td>
     </tr>
     <tr valign="baseline"> 
       <td align="right" nowrap bgcolor="#9999FF">Horario:</td>
-      <td bgcolor="#CCFFFF"><?php echo $row_Recordset1['text2_cs']; ?></td>
+      <td bgcolor="#CCFFFF"><?php  echo $row_Recordset1['text2_cs']; ?></td>
     </tr>
     <tr valign="baseline"> 
       <td align="right" nowrap bgcolor="#9999FF">Text3_cs:</td>
-      <td bgcolor="#CCFFFF"><?php echo $row_Recordset1['text3_cs']; ?></td>
+      <td bgcolor="#CCFFFF"><?php  echo $row_Recordset1['text3_cs']; ?></td>
     </tr>
     <tr valign="baseline"> 
       <td align="right" nowrap bgcolor="#9999FF">Text4_cs:</td>
-      <td bgcolor="#CCFFFF"><?php echo $row_Recordset1['text4_cs']; ?></td>
+      <td bgcolor="#CCFFFF"><?php  echo $row_Recordset1['text4_cs']; ?></td>
     </tr>
     <tr valign="baseline"> 
       <td align="right" nowrap bgcolor="#9999FF">&nbsp;</td>
@@ -130,11 +130,11 @@ $totalRows_Recordset1 = mysql_num_rows($Recordset1);
     </tr>
   </table>
   <input type="hidden" name="MM_update" value="form1">
-  <input type="hidden" name="apartat" value="<?php echo $row_Recordset1['apartat']; ?>">
+  <input type="hidden" name="apartat" value="<?php  echo $row_Recordset1['apartat']; ?>">
 </form>
 <p>&nbsp;</p>
   </body>
 </html>
-<?php
+<?php 
 mysql_free_result($Recordset1);
 ?>

@@ -10,7 +10,7 @@
 <div class="calendari-text">
   <a href="alas.php?fitxa={apartat}">{nom}</a> {sep} <a href="alas.php?fitxa={profe}">{profes}</a>
   <br/> 
- {text2} 
+ {text_calendari} 
 </div>
 
 <div style="width:100%;float:none;"></div> 

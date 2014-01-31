@@ -1,4 +1,4 @@
-<?php
+<?php 
 require_once('../Connections/alasdb.php'); 
 $fitxa="WAKSM";
 //$fitxa="F0104";
@@ -149,7 +149,7 @@ $fitxa="WAKSM";
 			<img id="img_waksman" src="img/waksman.jpg"/>
 			
 			<div id="area_text">
-				<?php
+				<?php 
 					print $contingut;
 				?>
 			</div>
